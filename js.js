@@ -64,6 +64,7 @@ changeImage = function () {
 	var imgs = ["img/banner1.jpg", "img/banner2.jpg", "img/banner3.jpg", "img/banner_main.jpg"];
 	document.getElementById("img").src = imgs[index];
 	index++;
+  document.getElementById("img1").src = imgs[index];
 	if (index == 4) {
 		index = 0;
 	}

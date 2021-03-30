@@ -64,15 +64,16 @@ body {
     background-color:rgb(35, 35, 172);
 }
 
-#main_banner{
+.main_banner{
     width:100%;
-    height:300px;
+    height:500px;
     background-color: aqua;
 }
-#main_banner img{
+.main_banner img{
     width:100%;
-    height:300px;
+    height:500px;
 }
+
 
 .content{
     height:auto;
@@ -120,6 +121,7 @@ body {
 .spthinhhanh{
     height:auto;
     width:100%;
+    position: relative;
 }
 
  .title{
@@ -128,35 +130,97 @@ body {
     background-color: rgb(87, 117, 57);
 }
 
-.click_previous{
-    float:left;
-    background-color: blue;
-    height: 100%;
-    width:5%;
+
+@media screen and (max-width: 600px){
+    .product{
+        grid-template-columns:repeat(2,50%);
+        grid-template-rows: 250px;
+    }
 }
 
+@media screen and (max-width: 800px) and (min-width: 600px){
+    .product{
+        grid-template-columns:repeat(3,33.333333%);
+        grid-template-rows: 250px;
+    }
+}
+
+@media screen and (min-width: 801px) and ( max-width: 1224px){
+    .product{
+        grid-template-columns:repeat(4,25%);
+        grid-template-rows: 250px;
+    }
+}
+
+@media screen and (min-width: 1225px){
+    .product{
+        grid-template-columns:repeat(5,20%);
+        grid-template-rows: 250px;
+    }
+}
 
 .product{
-    width:100%;
-    height: 250px;
-    background-color: rgb(220, 243, 9);
-    /* display: grid;
-	grid-template-columns:repeat(4,20%);
-	grid-template-rows: 100%;
-    border: 1px solid #333;
-    grid-column-gap:2%; */
+    width:96%;
+    height:250px;
+    margin-left: 2%;
+    margin-right: 2%;
+    display: grid;
+    box-shadow:
+    0px 0px 4px 4px rgba(0, 0, 0, 0.5),
+    0px 0px 4px 4px rgba(255, 255, 255, 0.5) inset;
+    background-color: #99ad41;
+    border:#333 1px solid;
+}
+
+.owl-buttons{
+    position: absolute;
+    height: 30px;
+    width: 100%;
+    margin-top: -145px;
+}
+
+.owl-next{
+    background-color: rgb(64, 216, 216);
+    border: 1px solid black;
+    float:right;
+    margin-right: 10px;
+    height: 30px;
+    width: 30px;
+    font-size: 20px;
+    opacity: 0.5;
+    text-align: center;
+    font-family: vs-icon;
+    cursor: pointer;
+
+}
+
+.owl-previous{
+    background-color: rgb(64, 216, 216); 
+    border: 1px solid black;
+    float:left;
+    margin-left: 10px;
+    height: 30px;
+    width: 30px;
+    font-size: 20px;
+    opacity: 0.5;
+    text-align: center;
+    font-family: vs-icon;
+    cursor: pointer;
+}
+
+.owl-next:hover{
+    background-color:rgb(79, 79, 182);
+    border: 1px rgb(79, 79, 182);
+    opacity: 2;
+}
+.owl-previous:hover{
+    background-color:rgb(79, 79, 182);
+    border: 1px rgb(79, 79, 182);
+    opacity: 2;
 }
 
 .item{
     background-color:rgb(123, 194, 194);
-    border: 1px soild rgb(0, 0, 0);
-}
-
-.click_next{
-    float:right;
-    background-color: rgb(10, 194, 108);
-    height: 100%;
-    width:5%;
 }
 
 
@@ -173,10 +237,4 @@ body {
     background-color:rgb(228, 67, 67);
 }
 
-.box{
-    box-model: border-box;
-    border: 10px solid transparent;
-    background-clip:padding-box;
-  }
 
-  a
