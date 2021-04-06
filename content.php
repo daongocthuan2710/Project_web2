@@ -2,7 +2,18 @@
 
     <div class="main_banner">
         <div class="col-md-12 col-sm-12">
-            <img id="img" onclick="changeImage()" src="img/banner1.jpg" alt="" />
+            <img id="img" src="img/banner5.jpg" onclick="changeSlide()" alt="" />
+        </div>
+        <div class="owl-banner">
+                    <div class="owl-next_banner" onclick="plusSlides(1)">&#10095;</div>
+                    <div class="owl-previous_banner" onclick="plusSlides(-1)">&#10094;</div>
+        </div>
+        <div class="div_dot"> 
+            <span class="dot" onclick="currentSlide(0)"></span> 
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+            <span class="dot" onclick="currentSlide(4)"></span>
         </div>
     </div>
 
@@ -17,8 +28,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&gt;</div>
-                    <div class="owl-previous">&lt;</div>
+                    <div class="owl-next">&#10095;</div>
+                    <div class="owl-previous">&#10094;</div>
                 </div>
         </div>
 
@@ -32,8 +43,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&gt;</div>
-                    <div class="owl-previous">&lt;</div>
+                    <div class="owl-next">&#10095;</div>
+                    <div class="owl-previous">&#10094;</div>
                 </div>
         </div>
 
@@ -63,8 +74,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&gt;</div>
-                    <div class="owl-previous">&lt;</div>
+                    <div class="owl-next">&#10095;</div>
+                    <div class="owl-previous">&#10094;</div>
                 </div>
             </div>
         </div>  
@@ -93,8 +104,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&gt;</div>
-                    <div class="owl-previous">&lt;</div>
+                    <div class="owl-next">&#10095;</div>
+                    <div class="owl-previous">&#10094;</div>
                 </div>
             </div>
         </div> 
@@ -118,8 +129,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&gt;</div>
-                    <div class="owl-previous">&lt;</div>
+                 <div class="owl-next">&#10095;</div>
+                    <div class="owl-previous">&#10094;</div>
                 </div>
             </div>
         </div> 
@@ -159,8 +170,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&gt;</div>
-                    <div class="owl-previous">&lt;</div>
+                    <div class="owl-next">&#10095;</div>
+                    <div class="owl-previous">&#10094;</div>
                 </div>
             </div>
         </div>  
@@ -189,8 +200,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&gt;</div>
-                    <div class="owl-previous">&lt;</div>
+                    <div class="owl-next">&#10095;</div>
+                    <div class="owl-previous">&#10094;</div>
                 </div>
             </div>
         </div> 
@@ -214,8 +225,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&gt;</div>
-                    <div class="owl-previous">&lt;</div>
+                    <div class="owl-next">&#10095;</div>
+                    <div class="owl-previous">&#10094;</div>
                 </div>
             </div>
         </div> 
