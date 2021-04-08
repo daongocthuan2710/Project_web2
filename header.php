@@ -22,5 +22,15 @@
                                 </div>
                         </ul>
                 </div>
-                <div id="header2"><h1>MENU</h1></div>
+                <div id="header2">
+                                <ul>
+                                        <li>TIẾNG VIỆT
+                                                <div class="menu_list"></div>
+                                                
+                                        </li>
+                                        <li>ENGLISH BOOKS
+                                                <div class="menu_list" ></div>
+                                        </li>
+                                </ul>
+                </div>
         </div>

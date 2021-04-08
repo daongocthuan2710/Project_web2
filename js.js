@@ -95,3 +95,48 @@ function showSlides(n) {
   document.getElementById("img").src = slides[slideIndex];
   dots[slideIndex].className += " active";
 }
+
+// var sp = [
+//   { id: 1  , image: "banner1.jpg"},
+// 	{ id: 2  , image: "banner2.jpg"},         
+// 	{ id: 3  , image: "banner3.jpg"},       
+// 	{ id: 4  , image: "banner4.jpg"},
+// 	{ id: 5  , image: "banner5.jpg"},
+// 	{ id: 6  , image: "banner6.jpg"},
+// ];
+
+function next_prduct(id,n){
+  var item = [
+    { id: 1  , image: "img/banner1.jpg"},
+    { id: 2  , image: "img/banner2.jpg"},         
+    { id: 3  , image: "img/banner3.jpg"},       
+    { id: 4  , image: "img/banner4.jpg"},
+    { id: 5  , image: "img/banner5.jpg"},
+    { id: 6  , image: "img/banner6.jpg"},
+  ];
+  sanpham(id,n,item);
+}
+
+// var index_div = 0;
+function sanpham(id,n,item){
+  var index_div = 0;
+	var html = '';
+  let dem=0;
+  var i=index_div + n;
+	while(dem<6){
+    if(i==item.length){
+      i=0}
+    if(i<0){i=item.length-1}
+    html+='<div class="box item" id="'+item[i].id+'">';
+      html+='<div class="img_div">';
+          html+='<img src="'+item[i].image+'" alt="" />';
+      html+='</div>';
+      html+='<div class="info_div"></div>';
+    html+='</div>';
+    i++;
+    dem++;
+  };
+  index_div=i;
+	document.getElementById(id).innerHTML = html;
+}
+

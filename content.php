@@ -18,24 +18,43 @@
     </div>
 
     <div id="content" class="content">
-        <div id="spthinhhanh" class="spthinhhanh">
+        <div class="spthinhhanh">
         <div class="title" style="background-color:brown"><h1>BÁN CHẠY</h1></div>
-                <div class="product" style="background-color:darksalmon">
-                    <div class="box item" style="background-color:brown"></div>
-                    <div class="box item" ></div>
-                    <div class="box item" style="background-color:blue"></div>
-                    <div class="box item"></div>
-                    <div class="box item" style="background-color:chocolate"></div>
+                <div id="spthinhhanh" class="product">
+                    <div class="box item">
+                        <div class="img_div"></div>
+                        <div class="info_div"></div>
+                    </div>
+                    <div class="box item" >
+                        <div class="img_div"></div>
+                        <div class="info_div"></div>
+                    </div>
+                    <div class="box item">
+                        <div class="img_div"></div>
+                        <div class="info_div"></div>
+                    </div>
+                    <div class="box item">
+                        <div class="img_div"></div>
+                        <div class="info_div"></div>
+                    </div>
+                    <div class="box item">
+                        <div class="img_div"></div>
+                        <div class="info_div"></div>
+                    </div>
+                    <div class="box item">
+                        <div class="img_div"></div>
+                        <div class="info_div"></div>
+                    </div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&#10095;</div>
-                    <div class="owl-previous">&#10094;</div>
+                    <div class="owl-next" onclick="next_prduct('spthinhhanh',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_prduct('spthinhhanh',-1)">&#10094;</div>
                 </div>
         </div>
 
-        <div id="sachkhuyendoc" class="spthinhhanh" style="background-color:rgb(233, 101, 101)">
+        <div class="spthinhhanh" style="background-color:rgb(233, 101, 101)">
                 <div class="title" style="background-color:cornflowerblue"><h1>SÁCH KHUYÊN ĐỌC</h1></div>
-                <div class="product" style="background-color:darksalmon">
+                <div id="sachkhuyendoc" class="product" style="background-color:darksalmon">
                     <div class="box item" style="background-color:brown"></div>
                     <div class="box item" ></div>
                     <div class="box item" style="background-color:blue"></div>
@@ -43,8 +62,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&#10095;</div>
-                    <div class="owl-previous">&#10094;</div>
+                    <div class="owl-next" onclick="next_prduct('sachkhuyendoc',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_prduct('sachkhuyendoc',-1)">&#10094;</div>
                 </div>
         </div>
 
@@ -64,9 +83,9 @@
                 </div>
             </div>
 
-            <div id="theloai1" class="spthinhhanh">
+            <div class="spthinhhanh">
                 <div class="title" style="background-color:bisque"><h1>THỂ LOẠI 1</h1></div>
-                <div class="product" style="background-color:bisque">
+                <div id="theloai1" class="product" style="background-color:bisque">
                     <div class="box item" style="background-color:brown"></div>
                     <div class="box item" ></div>
                     <div class="box item" style="background-color:blue"></div>
@@ -74,8 +93,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&#10095;</div>
-                    <div class="owl-previous">&#10094;</div>
+                    <div class="owl-next" onclick="next_prduct('theloai1',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_prduct('theloai1',-1)">&#10094;</div>
                 </div>
             </div>
         </div>  
@@ -94,8 +113,8 @@
                 </div>
             </div>
 
-            <div id="theloai2" class="spthinhhanh">
-                <div class="title" style="background-color:darksalmon"><h1>THỂ LOẠI 2</h1></div>
+            <div class="spthinhhanh">
+                <div id="theloai2" class="title" style="background-color:darksalmon"><h1>THỂ LOẠI 2</h1></div>
                 <div class="product" style="background-color:darksalmon">
                     <div class="box item" style="background-color:brown"></div>
                     <div class="box item" ></div>
@@ -104,8 +123,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&#10095;</div>
-                    <div class="owl-previous">&#10094;</div>
+                    <div class="owl-next" onclick="next_prduct('theloai2',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_prduct('theloai2',-1)">&#10094;</div>
                 </div>
             </div>
         </div> 
@@ -119,9 +138,9 @@
                 </div>
             </div>
 
-            <div id="theloai3" class="spthinhhanh">
+            <div class="spthinhhanh">
                 <div class="title" style="background-color:darkgreen"><h1>THỂ LOẠI 3</h1></div>
-                <div class="product" style="background-color:darksalmon">
+                <div id="theloai3" class="product" style="background-color:darksalmon">
                     <div class="box item" style="background-color:brown"></div>
                     <div class="box item" ></div>
                     <div class="box item" style="background-color:blue"></div>
@@ -129,8 +148,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                 <div class="owl-next">&#10095;</div>
-                    <div class="owl-previous">&#10094;</div>
+                    <div class="owl-next" onclick="next_prduct('theloai3',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_prduct('theloai3',-1)">&#10094;</div>
                 </div>
             </div>
         </div> 
@@ -160,9 +179,9 @@
                 </div>
             </div>
 
-            <div id="theloai1" class="spthinhhanh">
+            <div class="spthinhhanh">
                 <div class="title" style="background-color:bisque"><h1>THỂ LOẠI 4</h1></div>
-                <div class="product" style="background-color:bisque">
+                <div id="theloai4" class="product" style="background-color:bisque">
                     <div class="box item" style="background-color:brown"></div>
                     <div class="box item" ></div>
                     <div class="box item" style="background-color:blue"></div>
@@ -170,8 +189,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&#10095;</div>
-                    <div class="owl-previous">&#10094;</div>
+                    <div class="owl-next" onclick="next_prduct('theloai4',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_prduct('theloai4',-1)">&#10094;</div>
                 </div>
             </div>
         </div>  
@@ -190,9 +209,9 @@
                 </div>
             </div>
 
-            <div id="theloai2" class="spthinhhanh">
+            <div class="spthinhhanh">
                 <div class="title" style="background-color:darksalmon"><h1>THỂ LOẠI 5</h1></div>
-                <div class="product" style="background-color:darksalmon">
+                <div id="theloai5"  class="product" style="background-color:darksalmon">
                     <div class="box item" style="background-color:brown"></div>
                     <div class="box item" ></div>
                     <div class="box item" style="background-color:blue"></div>
@@ -200,8 +219,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&#10095;</div>
-                    <div class="owl-previous">&#10094;</div>
+                    <div class="owl-next" onclick="next_prduct('theloai5',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_prduct('theloai5',-1)">&#10094;</div>
                 </div>
             </div>
         </div> 
@@ -215,9 +234,9 @@
                 </div>
             </div>
 
-            <div id="theloai3" class="spthinhhanh">
+            <div class="spthinhhanh">
                 <div class="title" style="background-color:darkgreen"><h1>THỂ LOẠI 6</h1></div>
-                <div class="product" style="background-color:darksalmon">
+                <div id="theloai6"  class="product" style="background-color:darksalmon">
                     <div class="box item" style="background-color:brown"></div>
                     <div class="box item" ></div>
                     <div class="box item" style="background-color:blue"></div>
@@ -225,8 +244,8 @@
                     <div class="box item" style="background-color:chocolate"></div>
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next">&#10095;</div>
-                    <div class="owl-previous">&#10094;</div>
+                    <div class="owl-next" onclick="next_prduct('theloai6',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_prduct('theloai6',-1)">&#10094;</div>
                 </div>
             </div>
         </div> 
