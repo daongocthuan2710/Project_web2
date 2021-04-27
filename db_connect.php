@@ -1,7 +1,7 @@
 <?php
     $host="localhost";
-    $username="daothuan2710";
-    $password="daothuan2710";
+    $username="root";
+    $password="";
     $database="bookstore";
     $conn=mysqli_connect($host,$username,$password,$database);
     mysqli_query($conn,"SET NAMES 'utf8'");
@@ -14,20 +14,20 @@
 
 
 
-    $sql = "SELECT book_code, book_title, genre_code, quantity FROM Book";
-    // $result = $conn->query($sql);
+    $sql = "SELECT* FROM Sach";
     $result = mysqli_query($conn,$sql);
 
+    $sach_arr = array();
     if ($result->num_rows > 0) {
-        // output dữ liệu trên trang
-        while($row = mysqli_fetch_assoc($result)) {
-            echo "book_code: " . $row["book_code"]. "   genre_code: " . $row["genre_code"]. "   book-title: "
-                . $row["book_title"]."   quantity: ".$row["quantity"]. "<br>";
+        while($row = mysqli_fetch_object($result)) {
+            // echo "IdSach: " . $row["IdSach"]. "   TenSach: " . $row["TenSach"]. "   DonGia: "
+            //     . $row["DonGia"]."   HinhAnh: ".$row["HinhAnh"]."   NoiDung: ".$row["NoiDung"]. "<br>";
+            $sach_arr[]=$row;
         }
     } else {
         echo "0 results";
     }
 
-    
+    echo $sach_arr;
     mysqli_close($conn);
 ?>

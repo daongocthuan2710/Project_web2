@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-    <title>DNT Shop</title>
+    <title>BOOK STORE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet"  href="bootstrap\css\bootstrap.css">
