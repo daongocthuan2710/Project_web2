@@ -4,14 +4,13 @@
                                 <div class="container-fuild row">
                                         <div class="col-md-9 col-sm-9 col-9 row">
                                                 <div class="col-md-3 col-sm-12 logo" >
-                                                        <img src="img/logosach.png" alt="BookStore" >     -  
-                                                <!-- <h1>logo</h1> -->
+                                                        <a href="index.php"><img src="img/logosach.png" alt="BookStore" ></a>   -  
                                                 </div>
                                                 <div class="col-md-9 col-sm-12" style=" padding:2px; opacity: 0.9;">
                                                         <div class="search">
                                                                 <div class="contain_search">
                                                                         <input id="search_item" type="text" placeholder="Tìm Kiếm Của Bạn..."/>
-                                                                        <button onclick="Search();"><a href="#"><img src="img/search.png" /></a></button>
+                                                                        <button onclick="Search();"><a href="search_index.php"><img src="img/search.png" /></a></button>
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -32,23 +31,24 @@
                 </div>
                 <div id="header2">
                                 <ul>
-                                        <li>TIẾNG VIỆT
-                                                <div class="menu_list" id="menu_list1" onmouseover="list_show(1)" ></div>
-                                                
+                                        <li class="menu_list" id="sachtiengviet" onmouseover="list_show(1)" onmouseout="list_show(0)">
+                                                TIẾNG VIỆT
                                         </li>
-                                        <li>ENGLISH BOOKS
-                                                <div class="menu_list" id="menu_list2" onmouseover="list_show(1)"></div>
+                                        <li class="menu_list" id="englishbooks" onmouseover="list_show(1)" onmouseout="list_show(0)">
+                                                ENGLISH BOOKS
                                         </li>
                                 </ul>
                                 <div class="list_show" id="list_show">
-                                        <div class="show_list">
-                                
-                                        </div>
-                                        <div class="show_list">
-                                
-                                        </div>
-                                        <div class="show_list">
-                                        
+                                        <div class="container-fuild row">
+                                                <div class="col-md col-sm col show_list" style="background-color:aqua">
+                                                              
+                                                </div>
+                                                <div class="col-md col-sm col show_list" style="background-color:blue">
+                                                        a     
+                                                </div>
+                                                <div class="col-md col-sm col show_list">
+                                                       a      
+                                                </div>
                                         </div>
                                 </div>
                 </div>

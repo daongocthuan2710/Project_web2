@@ -19,7 +19,6 @@
 
     <div id="content" class="content">
         <div class="product_frame">
-                <!-- <div class="title"><h1>BÁN CHẠY</h1></div> -->
                 <div class="tieudemenu">
                     <span>SÁCH BÁN CHẠY</span>
                     <hr>
@@ -28,13 +27,12 @@
                     
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next" onclick="next_prduct('spthinhhanh',1)">&#10095;</div>
-                    <div class="owl-previous" id="b" onclick="next_prduct('spthinhhanh',-1)">&#10094;</div>
+                    <div class="owl-next" onclick="next_product('spthinhhanh',1)">&#10095;</div>
+                    <div class="owl-previous" id="b" onclick="next_product('spthinhhanh',-1)">&#10094;</div>
                 </div>
         </div>
 
         <div class="product_frame">
-                <!-- <div class="title"><h1>SÁCH KHUYÊN ĐỌC</h1></div> -->
                 <div class="tieudemenu">
                     <span>SÁCH KHUYÊN ĐỌC</span>
                     <hr>
@@ -43,8 +41,8 @@
                 
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next" onclick="next_prduct('sachkhuyendoc',1)">&#10095;</div>
-                    <div class="owl-previous" onclick="next_prduct('sachkhuyendoc',-1)">&#10094;</div>
+                    <div class="owl-next" onclick="next_product('sachkhuyendoc',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_product('sachkhuyendoc',-1)">&#10094;</div>
                 </div>
         </div>
         <div class="tieudemenu">
@@ -86,8 +84,8 @@
                 
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next" onclick="next_prduct('theloai1',1)">&#10095;</div>
-                    <div class="owl-previous" onclick="next_prduct('theloai1',-1)">&#10094;</div>
+                    <div class="owl-next" onclick="next_product('theloai1',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_product('theloai1',-1)">&#10094;</div>
                 </div>
             </div>
         </div>  
@@ -120,8 +118,8 @@
               
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next" onclick="next_prduct('theloai2',1)">&#10095;</div>
-                    <div class="owl-previous" onclick="next_prduct('theloai2',-1)">&#10094;</div>
+                    <div class="owl-next" onclick="next_product('theloai2',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_product('theloai2',-1)">&#10094;</div>
                 </div>
             </div>
         </div> 
@@ -148,8 +146,8 @@
                
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next" onclick="next_prduct('theloai3',1)">&#10095;</div>
-                    <div class="owl-previous" onclick="next_prduct('theloai3',-1)">&#10094;</div>
+                    <div class="owl-next" onclick="next_product('theloai3',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_product('theloai3',-1)">&#10094;</div>
                 </div>
             </div>
         </div> 
@@ -195,8 +193,8 @@
                
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next" onclick="next_prduct('theloai4',1)">&#10095;</div>
-                    <div class="owl-previous" onclick="next_prduct('theloai4',-1)">&#10094;</div>
+                    <div class="owl-next" onclick="next_product('theloai4',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_product('theloai4',-1)">&#10094;</div>
                 </div>
             </div>
         </div>  
@@ -230,8 +228,8 @@
                
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next" onclick="next_prduct('theloai5',1)">&#10095;</div>
-                    <div class="owl-previous" onclick="next_prduct('theloai5',-1)">&#10094;</div>
+                    <div class="owl-next" onclick="next_product('theloai5',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_product('theloai5',-1)">&#10094;</div>
                 </div>
             </div>
         </div> 
@@ -258,8 +256,8 @@
               
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next" onclick="next_prduct('theloai6',1)">&#10095;</div>
-                    <div class="owl-previous" onclick="next_prduct('theloai6',-1)">&#10094;</div>
+                    <div class="owl-next" onclick="next_product('theloai6',1)">&#10095;</div>
+                    <div class="owl-previous" onclick="next_product('theloai6',-1)">&#10094;</div>
                 </div>
             </div>
         </div> 
