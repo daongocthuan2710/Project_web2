@@ -1,36 +1,5 @@
 
-//Ajax
-// $(document).ready(function()
-// { 
-//   //  var submit = $("button[type='submit']");
-
-//     $('#content').load(function()
-//    {
-
-//      var datas = $('form#form_input').serialize();
-  
-//      //Sử dụng phương thức Ajax.
-//      $.ajax({
-//            type : 'POST', //Sử dụng kiểu gửi dữ liệu POST
-//            url : 'db_connect.php', //gửi dữ liệu sang trang data.php
-//            data : datas, //dữ liệu sẽ được gửi
-//            success : function(data)  // Hàm thực thi khi nhận dữ liệu được từ server
-//                      { 
-//                         if(data == 'false') 
-//                         {
-//                           alert('Không có người dùng');
-//                         }else{
-//                           alert(123);
-//                           // $('#spthinhhanh').html(data);
-//                           alert(data);
-//                         }
-//                      }
-//            });
-//            return false;
-//      });
-//  });
-
- function list_show(n){
+function list_show(n){
     if(n==1){
       document.getElementById("list_show").style.display='block';
     }
@@ -42,6 +11,8 @@
 function formatNumber(num) { // định dạng giá tiền
 	return Number(num).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') +'₫';
 }
+
+
 
 var index_div = 0;
 function sanpham(id,n,item){
@@ -75,161 +46,37 @@ function sanpham(id,n,item){
 var mangsach=[];
 $(document).ready(function()
 { 
-  //  var submit = $("button[type='submit']");
-  load_data();
+  load_datasach();
 
-  function load_data()
+  function load_datasach()
    {
      $.ajax({
-          type : 'POST', //Sử dụng kiểu gửi dữ liệu POST
-          url : 'db_connect.php', //gửi dữ liệu sang trang data.php
+          type : 'POST',
+          url : 'db_connect.php',
           dataType:'json',
-          //  data : datas, //dữ liệu sẽ được gửi
-           success : function(data)  // Hàm thực thi khi nhận dữ liệu được từ server
+           success : function(data)
                      { 
                       
-                      //  $('id').css('','');
                           $.each(data, function (key, item){
-                            mangsach.push(item);
-                            
+                            mangsach.push(item); 
                           });
-
-                          console.log(mangsach);
                           sanpham('spthinhhanh',0,mangsach);
-                          sanpham('sachkhuyendoc',9,mangsach);
-                          sanpham('theloai1',0,mangsach);
-                          sanpham('theloai2',5,mangsach);
-                          sanpham('theloai3',15,mangsach);
-                          sanpham('theloai4',50,mangsach);
-                          sanpham('theloai5',90,mangsach);
-                          // sanpham('theloai6',70,mangsach);
-                          
-                          // console.log(mangsach);
-                          let longitem = mangsach.length;
-                          let itemArr=[];
-                          itemArr=mangsach;
-                          let perPage = 20;
-                          let currentPage = 1;
-                          let start = 0;
-                          let end = perPage;
-                          // console.log(mangsach.length);
-                          const maxpage = Math.ceil(mangsach.length / perPage);
-
-                          function totalPage(item_array){ // tính tổng số trang của mảng item_array
-                            var Total = Math.ceil(item_array.length / perPage);
-                            // console.log(item_array.length);
-                            // console.log(Total);
-                            return Total;
-                          }
-                          function getCurrentPage(currentPage){
-                            start = (currentPage - 1) * perPage;
-                            end = currentPage * perPage;
-                          }
-
-                          function listPage (Total_pages){ // xuất ra số trang
-                            // console.log(Total_pages);
-                            let html ='';
-                            html += '<button id="nextLeft"><</button>';
-                            for (let i = 1; i<= Total_pages;i++){
-                              html += `<div id="page${i}">${i}</div>`;
-                            }
-                            html += '<button id="nextRight">></button>';
-                            // console.log(html);
-                            document.getElementById('page').innerHTML = html;
-                          }
-                          listPage(totalPage(mangsach));
-                                                    
-                                                    
-                     }
-                     
+                          sanpham('sachkhuyendoc',5,mangsach);
+                          sanpham('theloai1',15,mangsach);
+                          sanpham('theloai2',10,mangsach);
+                          sanpham('theloai3',20,mangsach);
+                          sanpham('theloai4',35,mangsach);
+                          sanpham('theloai5',40,mangsach);
+                          sanpham('theloai6',45,mangsach);                             
+                     }      
            });
            return false;
      };
  });
- console.log(mangsach.length);
 
  function next_product(id,n){
   sanpham(id,n,mangsach);
 }
-console.log(mangsach.length);
-// PHÂN TRANG TÌM KIẾM
-let longitem = mangsach.length;
-let itemArr=[];
-itemArr=mangsach;
-let perPage = 20;
-let currentPage = 1;
-let start = 0;
-let end = perPage;
-const maxpage = Math.ceil(mangsach.length / perPage);
-
-function totalPage(item_array){ // tính tổng số trang của mảng item_array
-	var Total = Math.ceil(item_array.length / perPage);
-  // console.log(item_array.length);
-  // console.log(Total);
-	return Total;
-}
-function getCurrentPage(currentPage){
-	start = (currentPage - 1) * perPage;
-	end = currentPage * perPage;
-}
-
-function listPage (Total_pages){ // xuất ra số trang
-  console.log(Total_pages);
-	let html ='';
-	html += '<button id="nextLeft"><</button>';
-	for (let i = 1; i<= Total_pages;i++){
-		html += `<div id="page${i}">${i}</div>`;
-	}
-	html += '<button id="nextRight">></button>';
-  console.log(html);
-	document.getElementById('page').innerHTML = html;
-}
-listPage(totalPage(mangsach));
-
-
-function clickNextRight1(){
-	document.getElementById('nextRight').style.borderColor = 'gray';
-	document.getElementById('nextRight').style.backgroundColor = 'whitesmoke';
-	document.getElementById('nextRight').style.color = 'gray';
-}
-function clickNextRight2(){
-	document.getElementById('nextRight').style.borderColor = 'black';
-	document.getElementById('nextRight').style.backgroundColor = 'white';
-	document.getElementById('nextRight').style.color = 'black';
-}
-function clickNextLeft1(){
-	document.getElementById('nextLeft').style.borderColor = 'gray';
-	document.getElementById('nextLeft').style.backgroundColor = 'whitesmoke';
-	document.getElementById('nextLeft').style.color = 'gray';
-}
-function clickNextLeft2(){
-	document.getElementById('nextLeft').style.borderColor = 'black';
-	document.getElementById('nextLeft').style.backgroundColor = 'white';
-	document.getElementById('nextLeft').style.color = 'black';
-}
-function sanpham_search(mangsach){
-  const contens = mangsach.map((item, index) => {
-    if(index >= start && index < end){
-      var html='';
-      html+='<div class="item_search">';
-        html+='<div class="top_item">';
-          html+='<img src="'+item.HinhAnh+'" alt="'+item.HinhAnh+'">';
-        html+='</div>';
-        html+='<div class="bot_item">';
-          html+='<div class="name_book">';
-            html+='<a href="#" class="product_title" title="Nhật Ký Cậu Bé Siêu Thân Thiện - Tập 2: Rowley Phiêu Lưu Ký">';
-              html+='"'+item.TenSach+'"';
-            html+='</a>';
-          html+='</div>';
-          html+='<div class="price_book">'+item.DonGia+'</div>';
-          html+='<div class="div_themvaogio">THÊM VÀO GIỎ HÀNG</div>';
-        html+='</div>';
-      html+='</div>';
-    }
-  });
-  document.getElementById('product_item').innerHTML = html;
-}
-
 
 setInterval(changeSlide,4000);
 var slideIndex = 0;

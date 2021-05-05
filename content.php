@@ -1,6 +1,6 @@
 <div id="main" class="main">
 
-    <div class="main_banner">
+    <div class="main_banner" >
         <div class="col-md-12 col-sm-12">
             <img id="img" src="img/banner5.jpg"  alt="" />
         </div>
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div id="content" class="content">
+    <div id="content" class="content" style="margin-top:10px;">
         <div class="product_frame">
                 <div class="tieudemenu">
                     <span>SÁCH BÁN CHẠY</span>
@@ -155,7 +155,7 @@
     </div>
 
 
-    <div id="content1" class="content">
+    <div id="content1" class="content" style="margin-top:10px;">
         <div class="tieudemenu">
             <span>ENGLISH BOOKS</span>
             <hr>

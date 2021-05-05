@@ -9,7 +9,9 @@
     $sql = "SELECT* FROM Sach";
     $result = mysqli_query($conn,$sql);
 
+    $vehicle=$_POST['activitiesArray'];
     $sach_arr = array();
+    $sach = array();
     if ($result->num_rows > 0) {
         while($row = mysqli_fetch_array($result)) {
             // $sach_arr[] = array(
@@ -18,6 +20,10 @@
             //     'DonGia' => $row['DonGia'],
             //     'HinhAnh' => $row['HinhAnh'],
             //     'NoiDung' => $row['NoiDung'],
+            //     'IdTheLoai' => $row['IdTheLoai'],
+            //     'IdTacGia' => $row['IdTacGia'],
+            //     'IdNXB' => $row['IdNXB'],
+            //     'NgayXB' => $row['NgayXB'],
             //     'TonKho' => $row['TonKho']
             // );
             $sach_arr[]=$row;
@@ -26,8 +32,16 @@
         echo "0 results";
     }
 
+    // for ($x = 0; $x < count($sach_arr); $x++) {
+    //     if(array_key_exists(($sach_arr[$x].'IdTheLoai'),$vehicle))
+    //     {
+    //         $sach[]=$sach_arr[$x];
+    //     }
+    // }
+ 
     // return $sach_arr;
-    echo json_encode($sach_arr);
+    // echo $sach;
+    echo json_encode($vehicle);
     mysqli_close($conn);
     
 ?>

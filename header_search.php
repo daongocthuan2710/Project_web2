@@ -1,4 +1,4 @@
-        <div id="header">
+<div id="header">
                 <div id="header1">
                         <ul id="menu_top">
                                 <div class="container-fuild row">
@@ -10,7 +10,7 @@
                                                         <div class="search">
                                                                 <div class="contain_search">
                                                                         <input id="search_item" type="text" placeholder="Tìm Kiếm Của Bạn..."/>
-                                                                        <button id="search_button"><a href="search_index.php"><img src="img/search.png" /></a></button>
+                                                                        <button id="search_button"><a><img src="img/search.png" /></a></button>
                                                                 </div>
                                                         </div>
                                                 </div>
