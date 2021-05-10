@@ -1,6 +1,5 @@
-<div id="main" class="main">
 
-    <div class="main_banner" >
+    <div class="main_banner" id="content_bannermain" >
         <div class="col-md-12 col-sm-12">
             <img id="img" src="img/banner5.jpg"  alt="" />
         </div>
@@ -183,7 +182,7 @@
             </div>
 
             <div class="product_frame">
-                <div class="title">
+                <div class="title" id="demooo">
                     <ul>
                         <li>FICTION</li>                        
                     </ul>
@@ -263,4 +262,185 @@
         </div> 
 
     </div>
-</div>
+
+    <div id="main_search" style="margin-bottom:20px;">
+        <div class="content_search">
+            <div class="container row">
+                <div class="col-md-3 col-sm-12 search_filter">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="col-md-12 col-sm-12 title_search" >
+                            <h2>TÌM KIẾM THEO</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12">
+
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-12 col-sm-12 content_filter">
+                                <div class="timtheo" onclick="anloc('gia')">
+                                    <div class="timtheogia">Giá</div>
+                                    <div class="muiten_timkiem" id="gia_v">v</div>
+                                </div>
+                                <div id="timtheogia_input">
+                                    <input type="text" id="giatu"  placeholder="TỪ"/>   
+                                    <hr width="10%" size="5" align="center" color="black"/>
+                                    <input type="text" id="giaden"  placeholder="ĐẾN"/>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <hr width="100%" size="3" align="center" color="black"/>
+
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-12 col-sm-12 content_filter">
+                                <div class="timtheo" onclick="anloc('sapxep')">
+                                    <div class="timtheogia">Sắp Xếp</div>
+                                    <div class="muiten_timkiem" id="sapxep_v">v</div>
+                                </div>
+                                <select class="chonngonngu" id="sapxep">
+                                    <option id="ngaunhien" value="ngaunhien" selected>&nbsp;Sắp Xếp Ngẫu Nhiên</option>
+                                    <option id="tangdan" value="tangdan">&nbsp;Sắp Xếp Tăng Dần</option>
+                                    <option id="giamdan" value="giamdan">&nbsp;Sắp Xếp Giảm Dần</option>
+                                </select>
+                            </div>  
+
+                        </div>
+
+                        <hr width="100%" size="3" align="center" color="black"/>
+
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-12 col-sm-12 content_filter">
+                                <div class="timtheo" onclick="anloc('theloai')">
+                                    <div class="timtheogia">Thể loại</div>
+                                    <div class="muiten_timkiem" id="theloai_v">v</div>
+                                </div>
+                                <!-- <div class="timtheo_input">
+                                    <input type="text" id="input_tl"  placeholder="Tìm Kiếm Thể Loại"/>
+                                </div> -->
+                                <ul class="detail_filter" id="theloai">
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <hr width="100%" size="3" align="center" color="black"/>
+
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-12 col-sm-12 content_filter">
+                                <div class="timtheo" onclick="anloc('tacgia')">
+                                    <div class="timtheogia">Tác Giả</div>
+                                    <div class="muiten_timkiem" id="tacgia_v">v</div>
+                                </div>
+                                <!-- <div class="timtheo_input">
+                                    <input type="text" id="input_tacgia" onchange="doigia2()" placeholder="Tìm Kiếm Tác Giả"/>
+                                </div> -->
+                                <ul class="detail_filter" id="tacgia">
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <hr width="100%" size="3" align="center" color="black"/>
+
+                        <div class="col-md-12 col-sm-12">
+                            <div class="col-md-12 col-sm-12 content_filter">
+                                <div class="timtheo" onclick="anloc('nxb')">
+                                    <div class="timtheogia">Nhà Xuất Bản</div>
+                                    <div class="muiten_timkiem" id="nxb_v">v</div>
+                                </div>
+                                <!-- <div class="timtheo_input">
+                                    <input type="text" id="input_nxb" onchange="doigia2()" placeholder="Tìm Kiếm Nhà Xuất Bản"/>
+                                </div> -->
+                                <ul class="detail_filter" id="nxb">
+
+                                </ul>
+                            </div>
+                        </div>
+
+                            <!-- <div class="col-md-12 col-sm-12">
+                                <div class="col-md-12 col-sm-12 content_filter">
+                                    <div class="timtheo">
+                                        <div style="text-align:center"><button id="hientatca">Hiển Thị Tất Cả</button></div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                    </div>
+                </div>
+                    <div class="col-md-9 col-sm-12 search_product">
+
+                        <div class="col-md-12 col-sm-12 product_item" id="product_item"></div>
+
+                        <div class="col-md-12 col-sm-12">
+                            <div id="page"></div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div id="demo"></div>
+    </div>  
+
+    <div id="content_giohang" style="display:none; margin-bottom:50px;">
+        <div class="cart">
+            <div class="container-fuild row" style="margin-top:10px;">
+                <div class="col-md-12 col-sm-12 row thuoctinhgiohang"> 
+                    <span class="col-md-2 col-sm-12 giohang1">Sản Phẩm</span>
+                    <span class="col-md-7 col-sm-12 giohang1">&nbsp;</span>
+                    <span class="col-md-1 col-sm giohang1">Đơn Giá</span>
+                    <span class="col-md-1 col-sm giohang1">Số Lượng</span>
+                    <span class="col-md-1 col-sm giohang1">Tổng Giá</span>
+                </div>
+
+                <div id="spcart" class="col-md-12 col-sm-12 row thuoctinhgiohang" style="margin-top:20px;">
+                    <!-- <div class="col-md-12 col-sm-12 row thuoctinhgiohang">
+                        <span class="col-md-2 col-sm-3 img_giohang">
+                            <img src="product/English books/Fiction/71_x1L68NNL.jpg" id="imgsp">
+                        </span>
+                        <span class="col-md-7 col-sm-6" id="tensp">
+                        <div class="ten_giohang">Men Like Gods (Collins Classics)</div>
+                        </span>
+                        <span class="col-md-1 col-sm-1 giohang2 " id="dongia" style="background-color:darkblue">53,000 đ</span>
+                        <span class="col-md-1 col-sm-1 row giohang2" style="background-color:darksalmon">
+                            <div class="col-md-8 col-sm-8 giohang3" style="background-color:darkkhaki">
+                                <input type="number" name="soluong" id="soluong" value="1" min="0">
+                            </div>
+                            <div class="col-md-4 col-sm-4" class="soluong">
+                                <div class="col-md-12 col-sm-12">+</div>
+                                <div class="col-md-12 col-sm-12">-</div>
+                            </div>    
+                        </span>
+                        <span class="col-md-1 col-sm-1 giohang2" id="tonggia" style="background-color:darkorange">
+                            <div class="col-md-12 col-sm-12 giohang2">53,000 đ</div>
+                            <div class="col-md-12 col-sm-12 close_sp" >x</div>
+                        </span>
+                    </div>
+                    
+                    <hr width="100%" size="3" align="center" color="black" style="margin-top:10px;"/> -->
+
+
+                </div>
+
+                
+                <div class="col-md-12 col-sm-12 row thuoctinhgiohang">
+                    <span class="col-md-2 col-sm-12 giohang1">&nbsp;</span>
+                    <span class="col-md-7 col-sm-12 giohang1">&nbsp;</span>
+                    <span class="col-md-3 col-sm  row giohang1">
+                        <div class="col-md-5 col-sm-5">Tổng Chi Phí</div>
+                        <div class="col-md-5 col-sm-5" id="tongchiphi">0đ</div>
+                    </span>
+
+                </div>
+
+                <div class="col-md-12 col-sm-12 row thuoctinhgiohang">
+                <span class="col-md-3 col-sm-12 giohang1">
+                    <a href="../Project_web2/?timkiem"><button class="ttmh">TIẾP TỤC MUA HÀNG</button></a>
+                    <span id="xoagiohang">Xóa Giỏ Hàng</span>
+                </span>
+                <span class="col-md-6 col-sm-12 giohang1">&nbsp;</span>
+                <span class="col-md-3 col-sm giohang1" style="text-align:center;"><button class="tt" id="thanhtoan">THANH TOÁN</button></span>
+            </div>  
+            </div>
+      </div>
+    </div>
+   

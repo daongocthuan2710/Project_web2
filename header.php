@@ -8,9 +8,9 @@
                                                 </div>
                                                 <div class="col-md-9 col-sm-12" style=" padding:2px; opacity: 0.9;">
                                                         <div class="search">
-                                                                <div class="contain_search">
+                                                                <div class="contain_search" id="contain_search">
                                                                         <input id="search_item" type="text" placeholder="Tìm Kiếm Của Bạn..."/>
-                                                                        <button id="search_button"><a href="search_index.php"><img src="img/search.png" /></a></button>
+                                                                        <button  id="search_button"><a href="../Project_web2/?timkiem"><img src="img/search.png"/></a></button>
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -19,10 +19,11 @@
                                         <div class="col-md-3 col-sm-3 col-3 row">
                                                 <div class="user_menu">
                                                         <div class="user">
-                                                                <img src="img/iconuser.png" alt="user">
+                                                                <a href="login_logout/login_logout.php"><img src="img/iconuser.png" alt="user"></a>
+                                                                <a href="admin_prj_HK2/admin_prj_HK2/admin_index.php"><img src="img/iconuser.png" alt="user"></a>
                                                         </div>
                                                         <div class="giohang">
-                                                                <img src="img/icongiohang.png" alt="giohang">
+                                                                <a href="../Project_web2/?giohang" id="giohang_index"><img src="img/icongiohang.png" alt="giohang"></a>
                                                         </div>
                                                 </div>
                                         </div>
