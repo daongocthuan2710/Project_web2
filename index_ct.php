@@ -1,4 +1,9 @@
 
+<?php 
+require('nxb_ct.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +17,9 @@
     <link rel="stylesheet" href="jquery.exzoom.css"> 
     <script src="app.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-    <title>chi tiet san pham</title>
+    <title><?php echo $sach[0]['TenSach']?></title>
 </head>
 <body>
-
-<!-- <?php include "header.php" ?>   -->
 
 
 <div class="product_details">
@@ -36,37 +39,37 @@
         <div class="exzoom img_product" id="exzoom">
             <div class="exzoom_img_box">
                 <div class='exzoom_img_ul'>
-                    <img src="img_ct/30.jpg"/>
+                    <?php echo "<img src='".$sach[0]['HinhAnh']."'/>" ?>
                 </div>
             </div>
         </div>
         <div class="details">
 
             <div class="book_name">
-                <h2>Tên Sách</h2>
+                <h2><?php echo $sach[0]['TenSach']?></h2>
             </div>
-
-            <div class="publisher">Nhà Phát Hành</div>
-
 
             <div class="interactive">
 
-                <h1>Giá</h1>
+                <h1><script> document.write(Number(<?php echo $sach[0]['DonGia']?>).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') +'₫');</script></h1>
 
-                <div class="description">
-                    <h3>Mô tả: </h3>
+                <!-- <div class="description">
+                    <h3>Mô tả:&nbsp; </h3>
                     <div class="content_description mrg">nội dung mô tả</div>
-                </div>
+                </div> -->
 
 
                 
-                <div class = "available mrg">Sẳn có : </div>
+                <div class = "available mrg">Tồn kho :&nbsp;<?php
+                if($sach[0]['TonKho']>0){echo $sach[0]['TonKho']." sản phẩm";}
+                 else echo "Hết hàng";                                 
+                 ?></div>
                 <div class = "amount mrg">
-                    Số lượng :
+                    Số lượng :&nbsp;
                     <div class = "IOD">
-                        <button  id = "decrease" type="" onclick= "decrease()">-</button>
+                        <button  id = "decrease" type="" onclick= "decrease(-1)">-</button>
                         <input id ="data" type="text" value = "1">
-                        <button id = "increase" type="number" onclick = "increase()" >+</button>
+                        <button id = "increase" type="number" onclick = "decrease(1)" >+</button>
                     </div>
                 
                 </div>
@@ -77,13 +80,12 @@
                         <!-- yêu thích -->
                     </button>
                     <div class="cart">
-                        <button type="" class = "btn btn-success">
-                                            <!-- <div class="bi-cart4 btn"></div> -->
+                        <!-- <button type="" class = "btn btn-success">
                                             Mua ngay
-                                        </button>
+                                        </button> -->
 
                                         <button type="">
-                                            <div class="bi-cart4 btn "></div>
+                                            <div class="bi-cart4 btn " onclick="add_cart(<?php echo $sach[0]['IdSach']?>)"></div>
                                             Thêm vào giỏ hàng
                         </button>
                     </div>
@@ -97,13 +99,12 @@
                             <div class="fa fa-thumbs-o-up"></div>
                             <!-- <img src="img_ct/like.png"/> -->
                             <!-- <a href="https://icons8.com/icon/114072/facebook-like">Facebook Like icon by Icons8</a> -->
-                        like
+                        Like
                     </button>
 
                     <button type="" class = " btn btn-primary">
                         <!-- <img src="img_ct/share.png"/> -->
-                        share
-                    </button>
+                        Share
                 </div>
             </div>
 
@@ -115,7 +116,7 @@
 
     <div class="CDC">
 
-        <button class="content_product btn btn-primary" onclick = "content();">Nội dung</button>
+        <button class="content_product btn btn-primary" onclick = "content()">Nội dung</button>
 
         <button class="detailed_infomation btn btn-primary" onclick = "infomation();">Thông tin chi tiết</button>
 
@@ -124,22 +125,16 @@
     </div>
 
     <div class="infomation_displayed">
-        <h2 id = "h2">Thông tin hiển thị</h2>
+        <div id = "h2" class="noidung"><?php echo $sach[0]['NoiDung']?></div>
         <div id = "chitiet">
             <div>
-                The loai :
+                Thể Loại:&nbsp;&nbsp;<?php echo $theloai[0]['TenTheLoai']?>
             </div>
             <div>
-                Loai san pham :
+                Tác Giả:&nbsp;&nbsp;<?php echo $tacgia[0]['TenTacGia']?>
             </div>
             <div>
-                tac gia :
-            </div>
-            <div>
-                nha xuat ban :
-            </div>
-            <div>
-                nha phat hanh :
+                Nhà Xuất Bản:&nbsp;&nbsp;<?php echo $nxb[0]['TenNXB']?>
             </div>
         </div>
 
@@ -171,79 +166,7 @@
     </div>
     
 </div>
-
-<!-- <div class="hot_products">
-<h1>Sản phẩm bán chạy</h1>
-
-    <div class="spthinhhanh">
-                <div id="spthinhhanh" class="product">
-                    <div class="box item">
-                        <div class="img_div"></div>
-                        <div class="info_div"></div>
-                    </div>
-                    <div class="box item" >
-                        <div class="img_div"></div>
-                        <div class="info_div"></div>
-                    </div>
-                    <div class="box item">
-                        <div class="img_div"></div>
-                        <div class="info_div"></div>
-                    </div>
-                    <div class="box item">
-                        <div class="img_div"></div>
-                        <div class="info_div"></div>
-                    </div>
-                    <div class="box item">
-                        <div class="img_div"></div>
-                        <div class="info_div"></div>
-                    </div>
-                </div>
-                <div class="owl-buttons">
-                    <div class="owl-next" onclick="next_prduct('spthinhhanh',1)">&#10095;</div>
-                    <div class="owl-previous" onclick="next_prduct('spthinhhanh',-1)">&#10094;</div>
-                </div>
-    </div>
-
-</div>
-
-<div class="same_kind">
-
-    <h1>Sản phẩm cùng thể loại</h1>
-
-    <div class="spthinhhanh">
-                <div id="spthinhhanh" class="product">
-                    <div class="box item">
-                        <div class="img_div"></div>
-                        <div class="info_div"></div>
-                    </div>
-                    <div class="box item" >
-                        <div class="img_div"></div>
-                        <div class="info_div"></div>
-                    </div>
-                    <div class="box item">
-                        <div class="img_div"></div>
-                        <div class="info_div"></div>
-                    </div>
-                    <div class="box item">
-                        <div class="img_div"></div>
-                        <div class="info_div"></div>
-                    </div>
-                    <div class="box item">
-                        <div class="img_div"></div>
-                        <div class="info_div"></div>
-                    </div>
-                </div>
-                <div class="owl-buttons">
-                    <div class="owl-next" onclick="next_prduct('spthinhhanh',1)">&#10095;</div>
-                    <div class="owl-previous" onclick="next_prduct('spthinhhanh',-1)">&#10094;</div>
-                </div>
-    </div>
-
-</div>
-
-</div> -->
-        
-   
+ 
 <?php include "footer.php" ?>
 
     <script src = "./js/app.js"></script>

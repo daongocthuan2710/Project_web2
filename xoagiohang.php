@@ -7,9 +7,10 @@
     mysqli_query($conn,"SET NAMES 'utf8'");
     
     $id=$_POST['id'];
-
+    $taikhoan=$_POST['taikhoan'];
+    // if($taikhoan==0){$taikhoan='temp';}
     if($id==0){
-        $sql = "DELETE FROM `giohang` WHERE IdKH='KH1'";
+        $sql = "DELETE FROM `giohang` WHERE IdKH='$taikhoan'";
     }
     else if($id==1){
         $query = "SELECT * FROM `hoadon`";
@@ -43,10 +44,10 @@
                 $sach_arr[] = $row;
             }
         }
-        echo "sach".$sach_arr;
+        // echo "sach".$sach_arr;
         
         $hd="HD".mt_rand(1, 600);
-        echo $hd;
+        // echo $hd;
         $i=1;
         while($i>0){
             
@@ -64,7 +65,13 @@
                 for($k=0;$k<count($giohang_arr);$k++){
                     if($giohang_arr[$k]['IdDonHang']==$sach_arr[$x]['IdSach']){
                         $tongtien+=$sach_arr[$x]['DonGia']*$giohang_arr[$k]['soluong'];
-                        
+                        $tonkho=$sach_arr[$x]['TonKho']-$giohang_arr[$k]['soluong'];
+                        $sach_id=$sach_arr[$x]['IdSach'];
+                        $queryn = "UPDATE sach SET TonKho = $tonkho WHERE IdSach = $sach_id";
+                        if ($conn->query($queryn) === TRUE) {
+                            echo "Dữ liệu đã được update";
+                        }
+
                         $idsach=$sach_arr[$x]['IdSach'];
                         $soluong=$giohang_arr[$k]['soluong'];
                         $dongia=$sach_arr[$x]['DonGia'];
@@ -81,21 +88,21 @@
             }
         }
 
-
+        
 
 
         $sql2="INSERT INTO `hoadon`(`IdHoaDon`, `IdKH`, `IdNV`, `TongTien`, `NgayMua`)
-                            VALUES ('$hd','KH1','NV1',$tongtien,'$today')";
+                            VALUES ('$hd','$taikhoan','NV1',$tongtien,'$today')";
         $result9 = mysqli_query($conn,$sql2);
         if (mysqli_query($conn, $sql2)) {
             echo "Bạn đã thêm giỏ hàng vào hóa đơn";
         } else {
             echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
         }
-        $sql = "DELETE FROM `giohang` WHERE IdKH='KH1'";
+        $sql = "DELETE FROM `giohang` WHERE IdKH='$taikhoan'";
     }
     else{
-        $sql = "DELETE FROM `giohang` WHERE IdKH='KH1' AND IdDonHang=$id";
+        $sql = "DELETE FROM `giohang` WHERE IdKH='$taikhoan' AND IdDonHang=$id";
     }
 
     $result10 = mysqli_query($conn,$sql);

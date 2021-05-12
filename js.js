@@ -42,7 +42,40 @@ function sanpham(id,n,item){
 }
 
 
+function SP_TL(id){
+	var theloai=[   {a:20001,b:20002,c:20003},
+					{a:20007,b:20008,c:20009,d:20006},
+					{a:20004,b:20005,c:200010,d:200011},
+					{a:10001},{a:10002},
+					{a:10003}
+				];
+	var mangsach=[];
+	$.ajax({
+		type : 'POST',
+		url : 'xulytheloai.php',
+		data:{id:id},
+		dataType:'json',
+		 success : function(data)
+				   { 
+					
+						$.each(data, function (key, item){
+						  mangsach.push(item); 
+						});
+						alert(theloai[1][0]);
+						// console.log(theloai[1]);
+						// alert(mangsach.length);
+						// for(let i=0;i<theloai[i];i++){
+						// 	if(theloai[i].includes(id)==true){
+						// 		var x='theloai'+i+1;
+						// 		alert(x);
+						// 		sanpham_theoTL(''+x+'',0,mangsach);
+						// 	}
+						// }
 
+					  
+				   }      
+		 });
+}
 // function sanphamgiohang(item){
 // 	var html = '';
 //     for(let i=0;i<4;i++){
@@ -67,26 +100,56 @@ function add_cart(id){
 	// console.log(x);
 	$(document).ready(function()
 	{ 
+		var taikhoan;
 	  load_data();
 	  function load_data()
 	   {
+		$.ajax({
+			type : 'POST', 
+			url : 'loc_taikhoan.php',
+			dataType:'text',
+			 success : function(data)  
+					   {    
+							taikhoan=data;
+							// alert(taikhoan);
+							if(taikhoan==0){
 
-	     $.ajax({
-	          type : 'POST', 
-	          url : 'giohang.php',
-			  dataType:"text",
-	          data:{ manggiohang: x },
-	           success : function(data)  
-	                     {    
-							console.log(data);
+							}
+							else{
+
 							
-	                     }
-						 
-	           });
+								$.ajax({
+									type : 'POST', 
+									url : 'giohang.php',
+									dataType:'text',
+									data:{ manggiohang: x, taikhoan:taikhoan, soluong:1 },
+									success : function(data2)  
+											{    
+												console.log(data2);
+												$.ajax({
+													type : 'POST',
+													url : 'sosp.php',
+													data:{taikhoan:taikhoan},
+													dataType:'text',
+													success : function(data1)
+																{ 
+																var y=''+data1+' sản phẩm';
+																$('#sosp').html(y);
+																}
+													});
+													return false;
+											}
+											
+									});
+									return false;
+								}
+					   }
+					   
+			 });
+	   };
 	           return false;
-	     };
-	});
-}
+	     });
+	}
 
 
 function hienthi(){
@@ -224,7 +287,6 @@ function ChangePage(item_array){ // đổi trang
 				}
 			}
 			if(numberPage==1){
-				alert("x");
 				document.getElementById('nextLeft').style.display='none';
 				document.getElementById('nextRight').style.display='none';
 			}
@@ -504,20 +566,30 @@ function anloc(value){
 }
 
 function xoatungsp(id){
+	var taikhoan;
 	xoaspgiohang();
 	function xoaspgiohang(){
 		$.ajax({
 			type : 'POST', 
-			url : 'xoagiohang.php',
-			data:{id:id},
+			url : 'loc_taikhoan.php',
 			success : function(data) 
 					{ 
-							
-							console.log(data); 
-							location.reload();      
+						taikhoan=data;
+							$.ajax({
+								type : 'POST', 
+								url : 'xoagiohang.php',
+								data:{id:id, taikhoan:taikhoan},
+								success : function(data) 
+										{ 
+												
+												console.log(data); 
+												location.reload();      
+										}						  
+								});
+								return false;
+						
 					}						  
 			});
-			return false;
 	};
 }
 
@@ -528,15 +600,16 @@ $(document).ready(function()
 	var mangdonhang=[];
 	var mangspdonhang=[];
 	var mangiddonhang=[];
-  load_datasach();
-  hienthi();
-  load_giohang(mangsach);
-  load_datatheloai();
-  load_datatacgia();
-  load_datanxb();
+	load_datasach();
+	hienthi();
+	load_user();
+	load_giohang(mangsach);
+	load_datatheloai();
+	load_datatacgia();
+	load_datanxb();
 
-  function load_datasach()
-   {
+  	function load_datasach()
+    {
      
         $.ajax({
           type : 'POST',
@@ -548,15 +621,15 @@ $(document).ready(function()
                           $.each(data, function (key, item){
                             mangsach.push(item); 
                           });
-
+						  console.log(mangsach.length);
                           sanpham('spthinhhanh',0,mangsach);
                           sanpham('sachkhuyendoc',5,mangsach);
-                          sanpham('theloai1',15,mangsach);
-                          sanpham('theloai2',10,mangsach);
-                          sanpham('theloai3',20,mangsach);
-                          sanpham('theloai4',35,mangsach);
-                          sanpham('theloai5',40,mangsach);
-                          sanpham('theloai6',45,mangsach);   
+                          sanpham_theoTL('theloai1',15,mangsach);
+                          sanpham_theoTL('theloai2',10,mangsach);
+                          sanpham_theoTL('theloai3',20,mangsach);
+                          sanpham_theoTL('theloai4',35,mangsach);
+                          sanpham_theoTL('theloai5',40,mangsach);
+                          sanpham_theoTL('theloai6',45,mangsach);   
                           
                           listPage(totalPage(mangsach)); 
                           document.getElementById('page1').style.backgroundColor = 'darkorange';
@@ -568,89 +641,105 @@ $(document).ready(function()
                           ChangePage(mangsach);  
 						
                      }      
-           });;
-     };
+           });
+    };
 
-	 function load_giohang(mangsach){
-	  	$.ajax({
-		   type : 'POST', 
-		   url : 'donhang.php',
-		   dataType:'json',
-			success : function(data) 
-					  { 
-						// kh, id, soluong
-						   $.each(data, function (key, item){
-							 mangdonhang.push(item);
-							 mangiddonhang.push(item.IdDonHang);		 
-						   });  
-						   var mangtest=[];
-						   $.ajax({
-							type : 'POST',
-							url : 'db_connect.php',
-							dataType:'json',
-							 success : function(data)
-									   { 
-										
-											$.each(data, function (key, item){
-												mangtest.push(item); 
-											});		
-										
-											for(let i=0;i<mangsach.length;i++){
-												if(mangiddonhang.includes(mangsach[i].IdSach)){
-													mangspdonhang.push(mangsach[i].IdSach);
-												}
-										   }
-										   var html = '';
-										   var tongchiphi=0;
-										   for(let i=0;i<mangdonhang.length;i++){
-											   for(let j=0;j<mangsach.length;j++){
-												   if(mangsach[j].IdSach==mangdonhang[i].IdDonHang){
-														html+='<div class="col-md-12 col-sm-12 row thuoctinhgiohang">';
-															html+='<span class="col-md-2 col-sm-3 img_giohang">';
-																html+='<img src="'+mangsach[j].HinhAnh+'">';
-															html+='</span>';
-															html+='<span class="col-md-7 col-sm-6">';
-																html+='<div class="ten_giohang">'+mangsach[j].TenSach+'</div>';
-															html+='</span>';
-															html+='<span class="col-md-1 col-sm-1 giohang2 ">'+formatNumber(mangsach[j].DonGia)+'</span>';
-															html+='<span class="col-md-1 col-sm-1 row giohang2">';
-																html+='<div class="col-md-8 col-sm-8 giohang3">';
-																html+='<input type="number" name="soluong" id="soluong_'+mangsach[j].IdSach+'" value='+mangdonhang[i].soluong+' min="0">';
-																html+='</div>';
-																html+='<div class="col-md-4 col-sm-4" class="soluong">';
-																html+='</div>';    
-															html+='</span>';
-															html+='<span class="col-md-1 col-sm-1 giohang2" id="tonggia">';
-																html+='<div class="col-md-12 col-sm-12 giohang2">'+formatNumber(Number(mangsach[j].DonGia)*mangdonhang[i].soluong)+'</div>';
-																html+='<div class="col-md-12 col-sm-12 close_sp" onclick="xoatungsp('+mangsach[j].IdSach+')">x</div>';
-															html+='</span>';
-														html+='</div>';
-														html+='<hr width="100%" size="3" align="center" color="black" style="margin-top:10px;"/>';
+	function load_giohang(mangsach){
+		var taikhoan;
+		$.ajax({
+			type : 'POST', 
+			url : 'loc_taikhoan.php',
+			 success : function(data) 
+					   { 
+							taikhoan=data;
+							// alert(data);
+							$.ajax({
+								type : 'POST', 
+								url : 'donhang.php',
+								data:{taikhoan:taikhoan},
+								dataType:'json',
+								 success : function(data1) 
+										   { 
+												// alert(data1);
+											// 	console.log(data1);
+											//  // kh, id, soluong
+												$.each(data1, function (key, item){
+												  mangdonhang.push(item);
+												  mangiddonhang.push(item.IdDonHang);		 
+												});  
+												var mangtest=[];
+												$.ajax({
+												 type : 'POST',
+												 url : 'db_connect.php',
+												 dataType:'json',
+												  success : function(data2)
+															{ 
+															 
+																 $.each(data2, function (key, item){
+																	 mangtest.push(item); 
+																 });		
+															 
+																 for(let i=0;i<mangsach.length;i++){
+																	 if(mangiddonhang.includes(mangsach[i].IdSach)){
+																		 mangspdonhang.push(mangsach[i].IdSach);
+																	 }
+																}
+																var html = '';
+																var tongchiphi=0;
+																for(let i=0;i<mangdonhang.length;i++){
+																	for(let j=0;j<mangsach.length;j++){
+																		if(mangsach[j].IdSach==mangdonhang[i].IdDonHang){
+																			 html+='<div class="col-md-12 col-sm-12 row thuoctinhgiohang">';
+																				 html+='<span class="col-md-2 col-sm-3 img_giohang">';
+																					 html+='<img src="'+mangsach[j].HinhAnh+'">';
+																				 html+='</span>';
+																				 html+='<span class="col-md-7 col-sm-6">';
+																					 html+='<div class="ten_giohang">'+mangsach[j].TenSach+'</div>';
+																				 html+='</span>';
+																				 html+='<span class="col-md-1 col-sm-1 giohang2 ">'+formatNumber(mangsach[j].DonGia)+'</span>';
+																				 html+='<span class="col-md-1 col-sm-1 row giohang2">';
+																					 html+='<div class="col-md-8 col-sm-8 giohang3">';
+																					 html+='<input type="number" name="soluong" id="soluong_'+mangsach[j].IdSach+'" value='+mangdonhang[i].soluong+' min="0">';
+																					 html+='</div>';
+																					 html+='<div class="col-md-4 col-sm-4" class="soluong">';
+																					 html+='</div>';    
+																				 html+='</span>';
+																				 html+='<span class="col-md-1 col-sm-1 giohang2" id="tonggia">';
+																					 html+='<div class="col-md-12 col-sm-12 giohang2">'+formatNumber(Number(mangsach[j].DonGia)*mangdonhang[i].soluong)+'</div>';
+																					 html+='<div class="col-md-12 col-sm-12 close_sp" onclick="xoatungsp('+mangsach[j].IdSach+')">x</div>';
+																				 html+='</span>';
+																			 html+='</div>';
+																			 html+='<hr width="100%" size="3" align="center" color="black" style="margin-top:10px;"/>';
+					 
+																			 tongchiphi+=Number(mangsach[j].DonGia)*mangdonhang[i].soluong;
+																		}
+																	}
+																}
+															 //    console.log(mangdonhang.length);
+															 //    console.log(mangsach.length);
+															 var x=''+mangdonhang.length+' sản phẩm';
+																if(mangdonhang.length==0){
+																 $('#spcart').html('<h2>Bạn chưa chọn sản phẩm<h2>');
+																}
+																else{
+																 $('#sosp').html(x);
+																 $('#spcart').html(html+'sản phẩm');
+																 $('#tongchiphi').html(formatNumber(tongchiphi));
+																}								  
+															}      
+												  }); 
+											   
+							   
+										   }	
+																 
+								 });
+					   }						  
+			 });
 
-														tongchiphi+=Number(mangsach[j].DonGia)*mangdonhang[i].soluong;
-												   }
-											   }
-										   }
-										//    console.log(mangdonhang.length);
-										//    console.log(mangsach.length);
-										   if(mangdonhang.length==0){
-											$('#spcart').html('Bạn chưa chọn sản phẩm');
-										   }
-										   else{
-											$('#spcart').html(html);
-											$('#tongchiphi').html(formatNumber(tongchiphi));
-										   }								  
-									   }      
-							 }); 
-						  
-		  
-					  }	
-											
-			});
 			return false;
-	  };
+	};
 
-     function load_datatheloai()
+    function load_datatheloai()
 	 {
 	   $.ajax({
 			type : 'POST',
@@ -669,9 +758,9 @@ $(document).ready(function()
 					   }      
 			 });
 			 return false;
-	   };
+	};
 
-	   function load_datatacgia()
+	function load_datatacgia()
 	   {
 		 $.ajax({
 			  type : 'POST',
@@ -690,9 +779,9 @@ $(document).ready(function()
 						 }      
 			   });
 			   return false;
-		 };
+	};
 
-		function load_datanxb()
+	function load_datanxb()
 	   {
 		 $.ajax({
 			  type : 'POST',
@@ -711,61 +800,169 @@ $(document).ready(function()
 						 }      
 			   });
 			   return false;
-		 };
+	};
 
-		 $("#xoagiohang").click( function(event){
+	function load_user(){
+		var taikhoan=[];
+		$.ajax({
+			type : 'POST', 
+			url : 'tai_taikhoan.php',	
+			dataType:'json',
+			success : function(data1) 
+					   { 
+						   console.log(data1);
+						   	var html='';
+							taikhoan=data1;
+							if(taikhoan==0){
+								html+='<li><img src="img/iconuser.png" alt="user"></li>';
+								html+='<li class="dangnhaptk"><a href="login_logout/login_logout.php">Đăng Nhập</a></li>';
+								
+							}
+							else{
+								html+='<li><img src="img/iconuser.png" alt="user"></li>';
+								html+='<li>'+taikhoan.USERNAME+'</li>';
+								$('#dangxuat').html('Đăng Xuất');
+							};
+							$('#dangnhap').html(html);
+					   }				  
+			 });
+	}
+
+
+	$("#dangxuat").click( function(event){
+		event.preventDefault();
+			$.ajax({
+				type : 'POST', 
+				url : 'dangxuat.php',
+				 success : function(data) 
+						   { 
+							alert('Đăng Xuất Thành Công');
+							window.location.href='index.php';
+						   }						  
+				 });
+				 
+		});
+
+	$("#xoagiohang").click( function(event){
 			event.preventDefault();
 			var result = confirm("Bạn có muốn xóa giỏ hàng?");
 			if (result == true) {
+				var taikhoan;
 				xoagiohang();
 				function xoagiohang(){
-				$.ajax({
-					type : 'POST', 
-					url : 'xoagiohang.php',
-					data:{id:0},
-					 success : function(data) 
-							   { 
-								console.log(data);
-								alert("Xóa giỏ hàng thành công.");   
-								// location.reload();       
-							   }						  
-					 });
-					 
+					$.ajax({
+						type : 'POST', 
+						url : 'loc_taikhoan.php',
+							success : function(data) 
+									{ 
+										taikhoan=data;
+										if(taikhoan==0){
+											var result1 = confirm("Bạn cần đăng nhập để thanh toán");
+											if (result1 == true){
+												window.location.href='login_logout/login_logout.php';
+											}
+											else{}
+										}
+										else{
+										$.ajax({
+											type : 'POST', 
+											url : 'xoagiohang.php',
+											data:{id:0, taikhoan:taikhoan},
+											success : function(data) 
+													{ 
+														console.log(data);
+														alert("Xóa giỏ hàng thành công."); 
+														$('#tongchiphi').html('0đ');
+													
+														$.ajax({
+															type : 'POST',
+															url : 'sosp.php',
+															data:{taikhoan:taikhoan},
+															dataType:'text',
+															success : function(data1)
+																	{ 
+																		var y=''+data1+' sản phẩm';
+																		$('#sosp').html(y);
+																	}
+																	});      
+													}						  
+											});
+										}
+
+									}						  
+						  });
+							 
 					 
 					 return false;
 			}
+			if(taikhoan!=0){
 			document.getElementById('spcart').innerHTML='<div style="font-size:20px; color:rgb(151, 143, 143);font-family: Arial,Helvetica,sans-serif;">Chưa có sản phẩm trong giỏ</div>';
-		 } else {
+			}
+		} else {
 	
 			}
-		  });
+	});
 
-		  $('#thanhtoan').click( function(event){
+	$('#thanhtoan').click( function(event){
 			event.preventDefault();
 			var result = confirm("Bạn có đồng ý thanh toán giỏ hàng không?");
 			if (result == true) {
+				var taikhoan;
 				xoagiohang();
 				function xoagiohang(){
-				$.ajax({
-					type : 'POST', 
-					url : 'xoagiohang.php',
-					data:{id:1},
-					 success : function(data) 
-							   { 
-								console.log(data);
-								alert("Thanh toán thành công.");   
-								// location.reload();       
-							   }						  
-					 });
+
+					$.ajax({
+						type : 'POST', 
+						url : 'loc_taikhoan.php',
+						 success : function(data) 
+								   { 
+									   taikhoan=data;
+									   if(taikhoan==0){
+											var result1 = confirm("Bạn cần đăng nhập để thanh toán");
+											if (result1 == true){
+												window.location.href='login_logout/login_logout.php';
+											}
+											else{}
+									   }
+									   else{
+											$.ajax({
+												type : 'POST', 
+												url : 'xoagiohang.php',
+												data:{id:1, taikhoan:taikhoan},
+												success : function(data) 
+														{ 
+															console.log(data);
+															alert("Thanh toán thành công.");  
+															$('#tongchiphi').html('0đ'); 
+															$.ajax({
+																type : 'POST',
+																url : 'sosp.php',
+																data:{taikhoan:taikhoan},
+																dataType:'text',
+																success : function(data1)
+																		{ 
+																			var y=''+data1+' sản phẩm';
+																			$('#sosp').html(y);
+																		}
+																		});       
+														}						  
+											});
+									   }
+
+								   }						  
+						 });
+					
 					 
 					 
 					 return false;
 			}
-			document.getElementById('spcart').innerHTML='<div style="font-size:20px; color:rgb(151, 143, 143);font-family: Arial,Helvetica,sans-serif;">Chưa có sản phẩm trong giỏ</div>';
+			if(taikhoan!=0){
+				document.getElementById('spcart').innerHTML='<div style="font-size:20px; color:rgb(151, 143, 143);font-family: Arial,Helvetica,sans-serif;">Chưa có sản phẩm trong giỏ</div>';
+			}
 		 } else {
 	
 			}
-		  });
+	});
  });
 
  function next_product(id,n){
@@ -785,12 +982,13 @@ $(document).ready(function()
 	  $.ajax({
 		   type : 'POST', 
 		   url : 'db_connect.php',
+		   dataType:'json',
 			success : function(data) 
 					  { 
 					   
 						   $.each(data, function (key, item){
 							 mangsach.push(item);		 
-						   });                   
+						   });                
 					  }						  
 			});
 			return false;

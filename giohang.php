@@ -9,6 +9,9 @@
     $sql = "SELECT* FROM giohang";
     $result = mysqli_query($conn,$sql);
 
+    $sqlx = "SELECT* FROM sach";
+    $resultx = mysqli_query($conn,$sqlx);
+    $sach=array();
     $giohang = array();
     $giohang1 = array();
     if ($result->num_rows > 0) {
@@ -17,15 +20,34 @@
             $giohang1[] = $row['IdDonHang'];
         }
     } else {
-        echo "0 results";
+        // echo "0 results";
     }
+
+    if ($resultx->num_rows > 0) {
+        while($row = mysqli_fetch_array($resultx)) {
+            $sach[] = $row;
+        }
+    }
+
+
     $x=$_POST['manggiohang'];
-    
+    $taikhoan=$_POST['taikhoan'];
+    $soluongthem=$_POST['soluong'];
+    // if($taikhoan==0){$taikhoan='temp';}
+    $tonkho=0;
+
     for($i=0;$i<count($giohang);$i++){
         if($giohang[$i]['IdDonHang']===$x){
-            $soluong=$giohang[$i]['soluong']+1;
+            for($e=0;$e<count($sach);$e++){
+                if($sach[$e]['IdSach']==$x){
+                    $tonkho=$sach[$e]['TonKho'];
+                }
+            }
+            $soluong=$giohang[$i]['soluong']+$soluongthem;
+            if($soluong>$tonkho) $soluong=$tonkho;
             // echo $giohang[$i]['soluong'];
             $mang= $giohang[$i]['IdDonHang'];
+            
             $query = "UPDATE giohang SET soluong = $soluong WHERE IdDonHang = $mang";
             if ($conn->query($query) === TRUE) {
                 echo "Dữ liệu đã được update";
@@ -41,7 +63,7 @@
                         echo "Không thêm sản phẩm mới";
                     } 
         else{
-            $sql1 = "INSERT INTO giohang (IdDonHang, soluong, IdKH) VALUES ('$x', 1, 'KH1')";
+            $sql1 = "INSERT INTO giohang (IdDonHang, soluong, IdKH) VALUES ('$x', $soluongthem, '$taikhoan')";
             if (mysqli_query($conn, $sql1)) {
                 echo "New record created successfully";
             } else {

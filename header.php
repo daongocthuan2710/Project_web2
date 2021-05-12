@@ -2,11 +2,11 @@
                 <div id="header1">
                         <ul id="menu_top">
                                 <div class="container-fuild row">
-                                        <div class="col-md-9 col-sm-9 col-9 row">
-                                                <div class="col-md-3 col-sm-12 logo" >
+                                        <div class="col-md-8 col-sm-9 col-9 row">
+                                                <div class="col-md-2 col-sm-12 logo" >
                                                         <a href="index.php"><img src="img/logosach.png" alt="BookStore" ></a>   -  
                                                 </div>
-                                                <div class="col-md-9 col-sm-12" style=" padding:2px; opacity: 0.9;">
+                                                <div class="col-md-10 col-sm-12" style=" padding:2px; opacity: 0.9;">
                                                         <div class="search">
                                                                 <div class="contain_search" id="contain_search">
                                                                         <input id="search_item" type="text" placeholder="Tìm Kiếm Của Bạn..."/>
@@ -16,14 +16,21 @@
                                                 </div>
                                         </div>
 
-                                        <div class="col-md-3 col-sm-3 col-3 row">
+                                        <div class="col-md-4 col-sm-3 col-3 row"">
                                                 <div class="user_menu">
-                                                        <div class="user">
-                                                                <a href="login_logout/login_logout.php"><img src="img/iconuser.png" alt="user"></a>
-                                                                <a href="admin_prj_HK2/admin_prj_HK2/admin_index.php"><img src="img/iconuser.png" alt="user"></a>
+                                                        <div class="col-md-12 col-sm-12 col-12 row">
+                                                                <ul class="col-md-6 col-sm-12 col-12 row" id="dangnhap">
+                                                                        <li><img src="img/iconuser.png" alt="user"></li>
+                                                                        <li class="dangnhaptk"><a href="login_logout/login_logout.php">Đăng Nhập</a></li>
+                                                                        <!-- <a href="admin_prj_HK2/admin_index.php"><img src="img/iconuser.png" alt="user"></a> -->
+                                                                </ul>
+                                                                <div class="col-md-6 col-sm-12 col-12 row" id="dangxuat">
+                                                                        
+                                                                </div>
                                                         </div>
-                                                        <div class="giohang">
-                                                                <a href="../Project_web2/?giohang" id="giohang_index"><img src="img/icongiohang.png" alt="giohang"></a>
+                                                        <div class="col-md-12 col-sm-12 col-12 row giohang">
+                                                                <div class="col-md-2 col-sm-6 col-6"><a href="../Project_web2/?giohang" id="giohang_index"><img src="img/icongiohang.png" alt="giohang"></a></div>
+                                                                <div class="col-md-10 col-sm-6 col-6 sp" id="sosp" style="margin-top: 15px;"> 0 sản phẩm</div>
                                                         </div>
                                                 </div>
                                         </div>
@@ -45,10 +52,10 @@
                                                               
                                                 </div>
                                                 <div class="col-md col-sm col show_list" style="background-color:blue">
-                                                        a     
+                                                            
                                                 </div>
                                                 <div class="col-md col-sm col show_list">
-                                                       a      
+                                                           
                                                 </div>
                                         </div>
                                 </div>

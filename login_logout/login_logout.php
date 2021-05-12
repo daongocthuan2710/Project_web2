@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="style_dn.css" type="text/css">
     <link rel="stylesheet" href="../icon/font-awesome/css/font-awesome.min.css">
-    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <title>Đăng Nhập</title>
 </head>
 <body>
     <div class="container">
@@ -103,6 +104,6 @@
             </div>
         </div>
     </div>
-    <script src = "app.js"></script>
+    <script src = "app_dn.js"></script>
 </body>
 </html>

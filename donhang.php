@@ -8,14 +8,18 @@
 
     $sql = "SELECT* FROM giohang";
     $result = mysqli_query($conn,$sql);
-
+    $taikhoan=$_POST['taikhoan'];
+    // echo $taikhoan;
+    // if($taikhoan==0){$taikhoan='temp';}
     $giohang_arr = array();
     if ($result->num_rows > 0) {
         while($row = mysqli_fetch_array($result)) {
-            $giohang_arr[] = $row;
+            if($row['IdKH']==$taikhoan){
+                $giohang_arr[] = $row;
+            }
         }
     } else {
-        echo "0 results";
+        // echo "0 results";
     }
     // echo count($giohang_arr);
     echo json_encode($giohang_arr);

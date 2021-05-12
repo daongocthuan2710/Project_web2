@@ -73,9 +73,9 @@
             <div class="product_frame">
                 <div class="title">
                     <ul>
-                        <li>Chuyên Ngành</li>
-                        <li>Kiến Trúc - Hội Họa - Điện Ảnh</li>
-                        <li>Kinh Tế - Kinh Doanh</li>
+                        <li id="20001" onclick="SP_TL(20001)">Chuyên Ngành</li>
+                        <li id="20002" onclick="SP_TL(20002)">Kiến Trúc - Hội Họa - Điện Ảnh</li>
+                        <li id="20003" onclick="SP_TL(20003)">Kinh Tế - Kinh Doanh</li>
                     </ul>
 
                 </div>
@@ -106,10 +106,10 @@
             <div class="product_frame">
                 <div class="title">
                     <ul>
-                        <li>Thiếu Nhi</li>
-                        <li>Truyện Tranh - Manga</li>
-                        <li>Tuổi trẻ</li>
-                        <li>Tâm Lý - Giáo Dục</li>
+                        <li id="20008" onclick="SP_TL(20008)">Thiếu Nhi</li>
+                        <li id="20009" onclick="SP_TL(20009)">Truyện Tranh - Manga</li>
+                        <li id="20007" onclick="SP_TL(20007)">Tuổi trẻ</li>
+                        <li id="20006" onclick="SP_TL(20007)">Tâm Lý - Giáo Dục</li>
                     </ul>
 
                 </div>
@@ -135,10 +135,10 @@
             <div class="product_frame">
                 <div class="title">
                     <ul>
-                        <li>Kỹ Năng - Sống Đẹp</li>
-                        <li>Văn Hóa - Du Lịch</li>
-                        <li>Văn Học</li>
-                        <li>Tâm Linh - Tôn Giáo</li>
+                        <li id="20004" onclick="SP_TL(20004)">Kỹ Năng - Sống Đẹp</li>
+                        <li id="20010" onclick="SP_TL(20010)">Văn Hóa - Du Lịch</li>
+                        <li id="20011" onclick="SP_TL(20011)">Văn Học</li>
+                        <li id="20005" onclick="SP_TL(20005)">Tâm Linh - Tôn Giáo</li>
                     </ul>
                 </div>
                 <div id="theloai3" class="product">
@@ -184,7 +184,7 @@
             <div class="product_frame">
                 <div class="title" id="demooo">
                     <ul>
-                        <li>FICTION</li>                        
+                        <li id="10001" onclick="SP_TL(10001)">FICTION</li>                        
                     </ul>
 
                 </div>
@@ -219,7 +219,7 @@
             <div class="product_frame">
                 <div class="title">
                     <ul>
-                        <li>TEEN</li>
+                        <li id="10002" onclick="SP_TL(10002)">TEEN</li>
                     </ul>
 
                 </div>
@@ -247,7 +247,7 @@
             <div class="product_frame">
                 <div class="title">
                     <ul>
-                        <li>TRAVEL</li>
+                        <li id="10003" onclick="SP_TL(10003)">TRAVEL</li>
                     </ul>
 
                 </div>
@@ -265,7 +265,7 @@
 
     <div id="main_search" style="margin-bottom:20px;">
         <div class="content_search">
-            <div class="container row">
+            <div class="container row" style="margin-top:30px;">
                 <div class="col-md-3 col-sm-12 search_filter">
                     <div class="col-md-12 col-sm-12">
                         <div class="col-md-12 col-sm-12 title_search" >

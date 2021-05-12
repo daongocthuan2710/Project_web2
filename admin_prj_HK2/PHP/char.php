@@ -1,0 +1,2 @@
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<input type="hidden" id="m12"> <input type="hidden" id="m34"> <input type="hidden" id="m56"> <input type="hidden" id="m79"> <input type="hidden" id="m1012">
