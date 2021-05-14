@@ -7,7 +7,9 @@
     mysqli_query($conn,"SET NAMES 'utf8'");
     
     $id=$_POST['id'];
+    echo $id;
     $taikhoan=$_POST['taikhoan'];
+    echo $taikhoan;
     // if($taikhoan==0){$taikhoan='temp';}
     if($id==0){
         $sql = "DELETE FROM `giohang` WHERE IdKH='$taikhoan'";
@@ -64,8 +66,8 @@
                 echo "  ".$sach_arr[$x]['IdSach']."  ";
                 for($k=0;$k<count($giohang_arr);$k++){
                     if($giohang_arr[$k]['IdDonHang']==$sach_arr[$x]['IdSach']){
-                        $tongtien+=$sach_arr[$x]['DonGia']*$giohang_arr[$k]['soluong'];
-                        $tonkho=$sach_arr[$x]['TonKho']-$giohang_arr[$k]['soluong'];
+                        $tongtien+=$sach_arr[$x]['DonGia']*$giohang_arr[$k]['SoLuong'];
+                        $tonkho=$sach_arr[$x]['TonKho']-$giohang_arr[$k]['SoLuong'];
                         $sach_id=$sach_arr[$x]['IdSach'];
                         $queryn = "UPDATE sach SET TonKho = $tonkho WHERE IdSach = $sach_id";
                         if ($conn->query($queryn) === TRUE) {
@@ -73,11 +75,11 @@
                         }
 
                         $idsach=$sach_arr[$x]['IdSach'];
-                        $soluong=$giohang_arr[$k]['soluong'];
+                        $soluong=$giohang_arr[$k]['SoLuong'];
                         $dongia=$sach_arr[$x]['DonGia'];
-                        $query4="INSERT INTO `cthoadon`(`IdHoaDon`, `IdSach`, `SLBan`, `DonGia`) 
-                        VALUES ('$hd','$idsach',$soluong,$dongia)";
-                        $result8 = mysqli_query($conn,$query4);
+                        $query4="INSERT INTO `cthoadon`(`IdHoaDon`, `IdSach`, `SLBan`, `DonGia`,`GhiChu`) 
+                        VALUES ('$hd','$idsach',$soluong,$dongia,' ')";
+                        $result12 = mysqli_query($conn,$query4);
                         if (mysqli_query($conn, $query4)) {
                             echo "Thêm vào hóa đơn chi tiết thành công";
                         } else {
@@ -91,14 +93,15 @@
         
 
 
-        $sql2="INSERT INTO `hoadon`(`IdHoaDon`, `IdKH`, `IdNV`, `TongTien`, `NgayMua`)
-                            VALUES ('$hd','$taikhoan','NV1',$tongtien,'$today')";
+        $sql2="INSERT INTO `hoadon`(`IdHoaDon`, `IdKH`, `IdNV`, `TongTien`, `NgayMua`, `TrangThai`)
+                            VALUES ('$hd','$taikhoan','NV1',$tongtien,'$today',0)";
         $result9 = mysqli_query($conn,$sql2);
         if (mysqli_query($conn, $sql2)) {
             echo "Bạn đã thêm giỏ hàng vào hóa đơn";
         } else {
             echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
         }
+
         $sql = "DELETE FROM `giohang` WHERE IdKH='$taikhoan'";
     }
     else{

@@ -14,7 +14,7 @@
     $taikhoan=0;
     if ($result->num_rows > 0) {
         while($row = mysqli_fetch_array($result)) {
-            if($row['USERNAME']==$user && $row['USERNAME']==$pass ){
+            if($row['USERNAME']==$user && $row['PASSWORD']==$pass ){
                 if($row['MaQuyen']==NULL){
                     $x=$row['IdTK'];
                     $taikhoan=1;
@@ -24,6 +24,7 @@
                     } 
                 }
                 else{
+                    
                     $x=$row['IdTK'];
                     $taikhoan=2;
                     $query = "UPDATE taikhoan SET TrangThai = 1 WHERE IdTK = '$x'";

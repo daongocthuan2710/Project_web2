@@ -41,7 +41,7 @@ $(document).ready(function()
 					   {   
 						
 						taikhoan=data;
-
+						// alert(taikhoan);
 						  if(taikhoan==0){
 							  alert('Sai tài khoản hoặc mật khẩu, mời nhập lại');
 						  }

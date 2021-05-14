@@ -1,11 +1,48 @@
 
-function list_show(n){
-    // if(n==1){
-    //   document.getElementById("list_show").style.display='block';
-    // }
-    // else{
-    //   document.getElementById("list_show").style.display='none';
-    // }
+function move(){
+	// var chieucaoht = self.pageYOffset;
+	// // lấy chiều cao hiện tại của trang
+	// var set = 500;
+	// var run = setInterval(function(){
+	// 	chieucaoht = chieucaoht - 1*set;
+	// 	window.scrollTo(0,chieucaoht);    
+	// 	if(chieucaoht <= 500){
+	// 		clearInterval(run);
+	// 	}        
+	// },15)
+}
+
+function bin(id){
+	var result = confirm("Bạn có chắn chắn muốn hủy đơn hàng này không?");
+			if (result == true){
+				$.ajax({
+					type : 'POST', 
+					url : 'xoahoadon.php',
+					data : {id:id},
+					 success : function(data) 
+							   { 
+								alert(data);
+								location.reload();    
+							   }						  
+					 });
+			}
+			else{
+
+			}
+}
+
+
+function date(){
+				$.ajax({
+					type : 'POST', 
+					url : 'date.php',
+					data : {id:id},
+					 success : function(data) 
+							   { 
+								alert(data);
+								location.reload();    
+							   }						  
+					 });
 }
 
 function formatNumber(num) { // định dạng giá tiền
@@ -41,14 +78,94 @@ function sanpham(id,n,item){
 	document.getElementById(id).innerHTML = html;
 }
 
+var index_div2 = 0;
+function sanpham_theoTL(id,n,item,idtl){
+	var html = '';
+	let dem=0;
+	var i=index_div2 + n;
+	while(dem<5){
+
+		if(i<0){i=item.length-1}
+		if(i==item.length){i=0} 
+		html+='<div class="box item" id="'+item[i].IdSach+'">';
+		html+='<div class="img_div">';
+			html+='<a href="index_ct.php?id='+item[i].IdSach+'"><img src="'+item[i].HinhAnh+'" alt="'+item[i].HinhAnh+'" /></a>';
+		html+='</div>';
+		html+='<div class="info_div">';
+			html+='<div class="name_book">';
+			html+='<a href="index_ct.php?id='+item[i].IdSach+'" class="product_title" title="'+item[i].TenSach+'">';
+				html+='"'+item[i].TenSach+'"';
+				html+='</a>';
+				html+='</div>';
+			html+='<div class="price_book">'+formatNumber(item[i].DonGia)+'</div>';
+		html+='</div>';
+		html+='</div>';
+		i++;
+		dem++;
+	};
+	index_div=i;
+	document.getElementById(id).innerHTML = html;
+
+	var theloai=new Array();
+	theloai[0]=new Array(20001,20002,20003);
+	theloai[1]=new Array(20006,20007,20008,20009);
+	theloai[2]=new Array(20004,20005,20010,20011);
+	theloai[3]=new Array(10001);
+	theloai[4]=new Array(10002);
+	theloai[5]=new Array(10003);
+
+	document.getElementById(idtl).style.backgroundColor='#99c4c0'; 
+						   for(let n=0;n<theloai.length;n++){  
+							  if(theloai[n].includes(idtl)==true){
+								  for(let m=0;m<theloai[n].length;m++)
+									{
+										if(theloai[n][m]!=idtl){
+											document.getElementById(theloai[n][m]).style.backgroundColor='rgb(248, 91, 0)'; 
+										}
+									} 
+							  }
+}
+}
+
+var index_div3 = 0;
+function sanphambc(id,n,item,value){
+	
+	var html = '';
+  var dem=0;
+  var x=value;
+//   console.log(value);
+  var i=index_div3 + n;
+	while(dem<x){
+		if(i<0){i=item.length-1}
+		if(i==item.length){i=0} 
+		html+='<div class="box item" id="'+item[i].IdSach+'">';
+		html+='<div class="img_div">';
+			html+='<a href="index_ct.php?id='+item[i].IdSach+'"><img src="'+item[i].HinhAnh+'" alt="'+item[i].HinhAnh+'" /></a>';
+		html+='</div>';
+		html+='<div class="info_div">';
+			html+='<div class="name_book">';
+			html+='<a href="index_ct.php?id='+item[i].IdSach+'" class="product_title" title="'+item[i].TenSach+'">';
+				html+='"'+item[i].TenSach+'"';
+				html+='</a>';
+				html+='</div>';
+			html+='<div class="price_book">'+formatNumber(item[i].DonGia)+'</div>';
+		html+='</div>';
+		html+='</div>';
+    i++;
+    dem++;
+  };
+  index_div=i;
+	document.getElementById(id).innerHTML = html;
+}
 
 function SP_TL(id){
-	var theloai=[   {a:20001,b:20002,c:20003},
-					{a:20007,b:20008,c:20009,d:20006},
-					{a:20004,b:20005,c:200010,d:200011},
-					{a:10001},{a:10002},
-					{a:10003}
-				];
+	var theloai=new Array();
+		theloai[0]=new Array(20001,20002,20003);
+		theloai[1]=new Array(20006,20007,20008,20009);
+		theloai[2]=new Array(20004,20005,20010,20011);
+		theloai[3]=new Array(10001,0);
+		theloai[4]=new Array(10002,0);
+		theloai[5]=new Array(10003,0);
 	var mangsach=[];
 	$.ajax({
 		type : 'POST',
@@ -61,16 +178,12 @@ function SP_TL(id){
 						$.each(data, function (key, item){
 						  mangsach.push(item); 
 						});
-						alert(theloai[1][0]);
-						// console.log(theloai[1]);
-						// alert(mangsach.length);
-						// for(let i=0;i<theloai[i];i++){
-						// 	if(theloai[i].includes(id)==true){
-						// 		var x='theloai'+i+1;
-						// 		alert(x);
-						// 		sanpham_theoTL(''+x+'',0,mangsach);
-						// 	}
-						// }
+						for(let i=0;i<theloai.length;i++){
+							if(theloai[i].includes(id)==true){
+								var x='theloai'+(i+1)+'';
+								sanpham_theoTL(x,0,mangsach,id);
+							}
+						}
 
 					  
 				   }      
@@ -161,20 +274,28 @@ function hienthi(){
     document.getElementById('content').style.display='none';
     document.getElementById('content1').style.display='none';
     document.getElementById('main_search').style.display='none';
+	document.getElementById('content_lsdonhang').style.display='none';
     document.getElementById('content_giohang').style.display='block';
     document.getElementById('title_html').innerHTML = 'Giỏ Hàng';
-	// document.getElementById('spcart').innerHTML = 'abc';
-	// alert('abc');
-    // alert(manggiohang);
   }
   else if(t=='timkiem'){
     document.getElementById('content_bannermain').style.display='none';
     document.getElementById('content').style.display='none';
     document.getElementById('content1').style.display='none';
     document.getElementById('content_giohang').style.display='none';
+	document.getElementById('content_lsdonhang').style.display='none';
     document.getElementById('main_search').style.display='block';
     document.getElementById('title_html').innerHTML = 'Tìm Kiếm';
 
+  }
+  else if(t=='lsdonhang'){
+	document.getElementById('content_bannermain').style.display='none';
+    document.getElementById('content').style.display='none';
+    document.getElementById('content1').style.display='none';
+    document.getElementById('content_giohang').style.display='none';
+    document.getElementById('main_search').style.display='none';
+	document.getElementById('content_lsdonhang').style.display='block';
+    document.getElementById('title_html').innerHTML = 'Lịch Sử Đơn Hàng';
   }
 }
 
@@ -216,7 +337,7 @@ function quaylaidautrang(){
       if(chieucaoht <= 0){
           clearInterval(run);
       }        
-  },15)
+  },25)
 
 }
 
@@ -438,7 +559,31 @@ function sanpham_search(mangsach){
 	});
 	document.getElementById('product_item').innerHTML = html;
 	getCurrentPage(1);
-  }
+}
+
+function sanpham_lichsu(mangsach){
+	var html='';
+	const contens = mangsach.map((item, index) => {
+	  if(index >= start && index < end){
+		html+='<div class="item_search">';
+		  html+='<div class="top_item">';
+			html+='<a href="index_ct.php?id='+item.IdSach+'"><img src="'+item.HinhAnh+'" alt="'+item.HinhAnh+'"></a>';
+		  html+='</div>';
+		  html+='<div class="bot_item">';
+			html+='<div class="name_book_search">';
+			  html+='<a href="index_ct.php?id='+item.IdSach+'" class="product_title" title="'+item.TenSach+'">';
+				html+='"'+item.TenSach+'"';
+			  html+='</a>';
+			html+='</div>';
+			html+='<div class="price_book_search">'+formatNumber(item.DonGia)+'</div>';
+			html+='<div class="div_themvaogio" id="cart_'+item.IdSach+'" onclick="add_cart(this.id)">THÊM VÀO GIỎ HÀNG</div>';
+		  html+='</div>';
+		html+='</div>'; 
+	  }
+	});
+	document.getElementById('product_item').innerHTML = html;
+	getCurrentPage(1);
+}
 
 function rutgon(mangsach_container){
 	if(mangsach_container.length<1){
@@ -582,7 +727,6 @@ function xoatungsp(id){
 								success : function(data) 
 										{ 
 												
-												console.log(data); 
 												location.reload();      
 										}						  
 								});
@@ -592,6 +736,7 @@ function xoatungsp(id){
 			});
 	};
 }
+
 
 var mangsach=[];
 $(document).ready(function()
@@ -606,11 +751,12 @@ $(document).ready(function()
 	load_giohang(mangsach);
 	load_datatheloai();
 	load_datatacgia();
-	load_datanxb();
+	load_datanxb(); 
+	load_lichsugiohang();
 
   	function load_datasach()
     {
-     
+
         $.ajax({
           type : 'POST',
           url : 'db_connect.php',
@@ -621,15 +767,14 @@ $(document).ready(function()
                           $.each(data, function (key, item){
                             mangsach.push(item); 
                           });
-						  console.log(mangsach.length);
-                          sanpham('spthinhhanh',0,mangsach);
-                          sanpham('sachkhuyendoc',5,mangsach);
-                          sanpham_theoTL('theloai1',15,mangsach);
-                          sanpham_theoTL('theloai2',10,mangsach);
-                          sanpham_theoTL('theloai3',20,mangsach);
-                          sanpham_theoTL('theloai4',35,mangsach);
-                          sanpham_theoTL('theloai5',40,mangsach);
-                          sanpham_theoTL('theloai6',45,mangsach);   
+						//   console.log(mangsach.length);
+                          sanpham('sachkhuyendoc',5,mangsach);  
+						  SP_TL(20001);
+						  SP_TL(20008);
+						  SP_TL(20004);
+						  SP_TL(10001);
+						  SP_TL(10002);
+						  SP_TL(10003);
                           
                           listPage(totalPage(mangsach)); 
                           document.getElementById('page1').style.backgroundColor = 'darkorange';
@@ -639,6 +784,25 @@ $(document).ready(function()
 						  
                           sanpham_search(mangsach);                 
                           ChangePage(mangsach);  
+
+						  var value=$('#banchay').val();
+						  var mangbanchay=[];
+						  $.ajax({
+							type : 'POST',
+							url : 'banchay.php',
+							data:{value:value},
+							dataType:'json',
+							 success : function(data)
+									   { 
+										
+											$.each(data, function (key, item){
+												mangbanchay.push(item); 
+											});
+											sanphambc('spthinhhanh',0,mangbanchay,value);
+
+										  
+									   }      
+							 });
 						
                      }      
            });
@@ -691,7 +855,7 @@ $(document).ready(function()
 																		if(mangsach[j].IdSach==mangdonhang[i].IdDonHang){
 																			 html+='<div class="col-md-12 col-sm-12 row thuoctinhgiohang">';
 																				 html+='<span class="col-md-2 col-sm-3 img_giohang">';
-																					 html+='<img src="'+mangsach[j].HinhAnh+'">';
+																					 html+='<a href="index_ct.php?id='+mangsach[j].IdSach+'"><img src="'+mangsach[j].HinhAnh+'"></a>';
 																				 html+='</span>';
 																				 html+='<span class="col-md-7 col-sm-6">';
 																					 html+='<div class="ten_giohang">'+mangsach[j].TenSach+'</div>';
@@ -699,19 +863,19 @@ $(document).ready(function()
 																				 html+='<span class="col-md-1 col-sm-1 giohang2 ">'+formatNumber(mangsach[j].DonGia)+'</span>';
 																				 html+='<span class="col-md-1 col-sm-1 row giohang2">';
 																					 html+='<div class="col-md-8 col-sm-8 giohang3">';
-																					 html+='<input type="number" name="soluong" id="soluong_'+mangsach[j].IdSach+'" value='+mangdonhang[i].soluong+' min="0">';
+																					 html+='<input type="number" name="soluong" id="soluong_'+mangsach[j].IdSach+'" value='+mangdonhang[i].SoLuong+' min="0">';
 																					 html+='</div>';
 																					 html+='<div class="col-md-4 col-sm-4" class="soluong">';
 																					 html+='</div>';    
 																				 html+='</span>';
 																				 html+='<span class="col-md-1 col-sm-1 giohang2" id="tonggia">';
-																					 html+='<div class="col-md-12 col-sm-12 giohang2">'+formatNumber(Number(mangsach[j].DonGia)*mangdonhang[i].soluong)+'</div>';
+																					 html+='<div class="col-md-12 col-sm-12 giohang2">'+formatNumber(Number(mangsach[j].DonGia)*mangdonhang[i].SoLuong)+'</div>';
 																					 html+='<div class="col-md-12 col-sm-12 close_sp" onclick="xoatungsp('+mangsach[j].IdSach+')">x</div>';
 																				 html+='</span>';
 																			 html+='</div>';
 																			 html+='<hr width="100%" size="3" align="center" color="black" style="margin-top:10px;"/>';
 					 
-																			 tongchiphi+=Number(mangsach[j].DonGia)*mangdonhang[i].soluong;
+																			 tongchiphi+=Number(mangsach[j].DonGia)*mangdonhang[i].SoLuong;
 																		}
 																	}
 																}
@@ -737,6 +901,147 @@ $(document).ready(function()
 			 });
 
 			return false;
+
+	};
+
+	function load_lichsugiohang(){
+		var taikhoan;
+		$.ajax({
+			type : 'POST', 
+			url : 'loc_taikhoan.php',
+			 success : function(data) 
+					   { 
+							taikhoan=data;
+							$.ajax({
+								type : 'POST', 
+								url : 'hoadon.php',
+								data:{taikhoan:taikhoan},
+								dataType:'json',
+								 success : function(data1) 
+										   { 
+												var manghoadon=[];
+												var manghoadon=[];
+												var mangcthoadon=[];
+												$.each(data1, function (key, item){
+												  manghoadon.push(item);	 
+												});  
+
+												$.ajax({
+													type : 'POST',
+													url : 'cthoadon.php',
+													dataType:'json',
+													 success : function(data2)
+															   { 
+																
+																	$.each(data2, function (key, item){
+																		mangcthoadon.push(item); 
+																	});	
+
+																	var mangtest=[];
+
+																	$.ajax({
+																	type : 'POST',
+																	url : 'db_connect.php',
+																	dataType:'json',
+																	success : function(data3)
+																				{ 
+																				
+																					$.each(data3, function (key, item){
+																						mangtest.push(item); 
+																					});		
+																				
+																					var html = '';
+																					for(let i=0;i<manghoadon.length;i++){
+																										html+='<div class="col-md-12 col-sm-12 row thuoctinhlsdonhang">';
+																											html+='<div class="col-md-6 col-sm-8 row thuoctinhlsdonhang_sp">';
+																						for(let j=0; j<mangcthoadon.length;j++){
+																										
+																							if(mangcthoadon[j].IdHoaDon==manghoadon[i].IdHoaDon)
+																							{
+																								for(let k=0; k<mangtest.length;k++){
+																									if(mangtest[k].IdSach==mangcthoadon[j].IdSach){
+																												html+='<div class="col-md-12 col-sm-12 row thuoctinhlsdonhang">';   
+																													html+='<span class="col-md-2 col-sm-3 img_donhang">';																													
+																														html+='<a href="index_ct.php?id='+mangsach[k].IdSach+'"><img src="'+mangsach[k].HinhAnh+'"></a>';
+																														html+='</span>';
+																														html+='<span class="col-md-5 col-sm-6">';
+																														html+='<div class="ten_giohang">'+mangtest[k].TenSach+'</div>';
+																														html+='</span>';
+																													html+='<span class="col-md-2 col-sm-2 lsdonhang2">'+formatNumber(mangtest[k].DonGia)+'</span>';
+																													html+='<span class="col-md-1 col-sm-2 lsdonhang2">'+mangcthoadon[j].SLBan+'</span>';
+																													html+='<span class="col-md-2 col-sm-1 lsdonhang2">'+formatNumber(Number(mangcthoadon[j].DonGia)*mangcthoadon[j].SLBan)+'</span>';
+																					
+																												html+='</div>';
+																				
+																												html+='<hr width="100%" size="3" align="center" color="black" style="margin-top:10px;"/>';																										
+																				
+																											
+																									}																																													
+																								}
+																							}
+
+																						}
+																					
+																											html+='</div>';
+																										
+																											html+='<div class="col-md-1 col-sm-1 row thuoctinhlsdonhang_sp">&nbsp;</div>';
+																													
+																											html+='<div class="col-md-5 col-sm-4 row thuoctinhlsdonhang">';
+																				
+																												html+='<div class="col-md col-sm-12 row lsdonhang1">';
+																													html+='<span class="col-md-12 col-sm  row">'+formatNumber(manghoadon[i].TongTien)+'</span>';
+																												html+='</div>';
+																												html+='<div class="col-md col-sm-12 row lsdonhang1">';
+																													html+='<span class="col-md-12 col-sm ">'+manghoadon[i].NgayMua+'</span>';
+																												html+='</div>';
+																												html+='<div class="col-md col-sm-12  row lsdonhang1">';
+																												if(manghoadon[i].TrangThai==0){
+																													html+='<span class="col-md-12 col-sm  row">Chờ xác nhận</span>';	
+																												}
+																												else{
+																													html+='<span class="col-md-12 col-sm  row">Đã xử lý</span>';	
+																												}
+																												html+='</div>';
+																												html+='<div class="col-md col-sm-12  row lsdonhang1">';
+																												if(manghoadon[i].TrangThai==0){
+																													html+='<span class="col-md-12 col-sm  row bin" id="'+manghoadon[i].IdHoaDon+'" onclick="bin(this.id)"><img src="img/bin.png"></span>';	
+																												}
+																												else{
+																													html+='<span class="col-md-12 col-sm  row">&nbsp;</span>';	
+																												}
+																												html+='</div>';
+																											html+='</div>';
+																				
+																										html+='</div>';
+																										html+='<hr width="100%" size="4" align="center" color="black" style="margin-top:10px;"/>';
+																						}
+																				//    console.log(html);
+																				//    console.log(mangsach.length);
+																					if(manghoadon.length==0){
+																					$('#lsdh').html('<h2>Bạn chưa có đơn hàng nào!<h2>');
+																					}
+																					else{
+																					$('#lsdh').html(html);
+																					$('#tongsoctsp').html(manghoadon.length+" đơn hàng");
+																					}								  
+																				}      
+																	});
+																	return false;
+																								  
+															   }      
+													 }); 
+													 
+											
+											   
+							   
+										   }	
+																 
+								 });
+					   }						  
+			 });
+
+			return false;
+		
 	};
 
     function load_datatheloai()
@@ -810,7 +1115,6 @@ $(document).ready(function()
 			dataType:'json',
 			success : function(data1) 
 					   { 
-						   console.log(data1);
 						   	var html='';
 							taikhoan=data1;
 							if(taikhoan==0){
@@ -841,7 +1145,31 @@ $(document).ready(function()
 						   }						  
 				 });
 				 
-		});
+	});
+
+	$("#banchay").on('change', function(event){
+		event.preventDefault();
+		var value=$('#banchay').val();
+		console.log(value);
+		var mangbanchay=[];
+		$.ajax({
+		  type : 'POST',
+		  url : 'banchay.php',
+		  data:{value:value},
+		  dataType:'json',
+		   success : function(data)
+					 { 
+					  
+						  $.each(data, function (key, item){
+							  mangbanchay.push(item); 
+						  });
+						  sanphambc('spthinhhanh',0,mangbanchay,value);
+	
+						
+					 }      
+		   });
+				 
+	});
 
 	$("#xoagiohang").click( function(event){
 			event.preventDefault();
@@ -924,27 +1252,45 @@ $(document).ready(function()
 											}
 											else{}
 									   }
+									   else if(taikhoan==1){
+											alert("Không thể sử dụng tài quản lý bán hàng để mua hàng.")
+									   }
 									   else{
 											$.ajax({
 												type : 'POST', 
-												url : 'xoagiohang.php',
-												data:{id:1, taikhoan:taikhoan},
+												url : 'kiemtratonkho.php',
+												dataType:'text',
+												data:{taikhoan:taikhoan},
 												success : function(data) 
 														{ 
-															console.log(data);
-															alert("Thanh toán thành công.");  
-															$('#tongchiphi').html('0đ'); 
-															$.ajax({
-																type : 'POST',
-																url : 'sosp.php',
-																data:{taikhoan:taikhoan},
-																dataType:'text',
-																success : function(data1)
-																		{ 
-																			var y=''+data1+' sản phẩm';
-																			$('#sosp').html(y);
-																		}
-																		});       
+															if(data!=0){
+																alert(data);
+															}
+															else{
+																$.ajax({
+																	type : 'POST', 
+																	url : 'xoagiohang.php',
+																	data:{id:1, taikhoan:taikhoan},
+																	success : function(data) 
+																			{ 
+																				alert("Thanh toán thành công.");  
+																				$('#tongchiphi').html('0đ'); 
+																				$.ajax({
+																					type : 'POST',
+																					url : 'sosp.php',
+																					data:{taikhoan:taikhoan},
+																					dataType:'text',
+																					success : function(data1)
+																							{ 
+																								var y=''+data1+' sản phẩm';
+																								$('#sosp').html(y);
+																							}
+																							});     
+																							
+																							$('#spcart').html('<div style="font-size:20px; color:rgb(151, 143, 143);font-family: Arial,Helvetica,sans-serif;">Chưa có sản phẩm trong giỏ</div>');
+																			}						  
+																});
+															}   
 														}						  
 											});
 									   }
@@ -956,19 +1302,39 @@ $(document).ready(function()
 					 
 					 return false;
 			}
-			if(taikhoan!=0){
-				document.getElementById('spcart').innerHTML='<div style="font-size:20px; color:rgb(151, 143, 143);font-family: Arial,Helvetica,sans-serif;">Chưa có sản phẩm trong giỏ</div>';
-			}
 		 } else {
 	
 			}
 	});
+	
  });
 
- function next_product(id,n){
+function next_product(id,n){
   sanpham(id,n,mangsach);
 }
 
+function click_banchay(n){
+	var value=$('#banchay').val();
+	console.log(value);
+	var mangbanchay=[];
+	$.ajax({
+	  type : 'POST',
+	  url : 'banchay.php',
+	  data:{value:value},
+	  dataType:'json',
+	   success : function(data)
+				 { 
+				  
+					  $.each(data, function (key, item){
+						  mangbanchay.push(item); 
+					  });
+					  console.log(mangbanchay);
+					  sanphambc('spthinhhanh',n,mangbanchay,value);
+
+					
+				 }      
+	   });
+  }
 
 setInterval(changeSlide,4000);
 var slideIndex = 0;
@@ -1188,15 +1554,8 @@ $(document).ready(function()
 	
  });
 
-setInterval(next_product("spthinhhanh",-1), 3000);
-setInterval(next_product('spkhuyendoc',-1), 3000);
-setInterval(next_product('theloai1',-1), 3000);
-setInterval(next_product('theloai2',-1), 3000);
-setInterval(next_product('theloai3',-1), 3000);
-setInterval(next_product('theloai4',-1), 3000);
-setInterval(next_product('theloai5',-1), 3000);
-seInterval(next_product('theloai6',-1), 3000);
-// auto();
+
+
 function changeSlide() {
 	showSlides(slideIndex += 1);
 }
@@ -1229,3 +1588,12 @@ function showSlides(n) {
   document.getElementById("img").src = slides[slideIndex];
   dots[slideIndex].className += " active";
 }
+
+// setInterval(click_banchay, 7000,1);
+setInterval(next_product, 6000,"sachkhuyendoc",1);
+setInterval(next_product, 5000,"theloai1",1);
+setInterval(next_product, 6000,"theloai2",1);
+setInterval(next_product, 7000,"theloai3",1);
+setInterval(next_product, 6000,"theloai4",1);
+setInterval(next_product, 5000,"theloai5",1);
+setInterval(next_product, 7000,"theloai6",1);

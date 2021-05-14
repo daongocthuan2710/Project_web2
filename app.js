@@ -50,8 +50,8 @@ function add_cart(id){
 													dataType:'text',
 													success : function(data1)
 																{ 
-																var y=''+data1+' sản phẩm';
-																$('#sosp').html(y);
+																	var y=''+data1+' sản phẩm';
+																	$('#sosp').html(y);
 																}
 													});
 													return false;

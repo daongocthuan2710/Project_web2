@@ -43,12 +43,12 @@
                     $tonkho=$sach[$e]['TonKho'];
                 }
             }
-            $soluong=$giohang[$i]['soluong']+$soluongthem;
+            $soluong=$giohang[$i]['SoLuong']+$soluongthem;
             if($soluong>$tonkho) $soluong=$tonkho;
             // echo $giohang[$i]['soluong'];
             $mang= $giohang[$i]['IdDonHang'];
             
-            $query = "UPDATE giohang SET soluong = $soluong WHERE IdDonHang = $mang";
+            $query = "UPDATE giohang SET SoLuong = $soluong WHERE IdDonHang = $mang";
             if ($conn->query($query) === TRUE) {
                 echo "Dữ liệu đã được update";
             } else {
@@ -63,7 +63,7 @@
                         echo "Không thêm sản phẩm mới";
                     } 
         else{
-            $sql1 = "INSERT INTO giohang (IdDonHang, soluong, IdKH) VALUES ('$x', $soluongthem, '$taikhoan')";
+            $sql1 = "INSERT INTO giohang (IdDonHang, SoLuong, IdKH) VALUES ('$x', $soluongthem, '$taikhoan')";
             if (mysqli_query($conn, $sql1)) {
                 echo "New record created successfully";
             } else {

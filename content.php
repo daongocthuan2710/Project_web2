@@ -21,13 +21,15 @@
                 <div class="tieudemenu">
                     <span>SÁCH BÁN CHẠY</span>
                     <hr>
+                    <span>Top</span>
+                    <input type="text" id="banchay" name="banchay" value="5" style="width:50px;">
                 </div>
                 <div id="spthinhhanh" class="product">
                     
                 </div>
                 <div class="owl-buttons">
-                    <div class="owl-next" onclick="next_product('spthinhhanh',1)">&#10095;</div>
-                    <div class="owl-previous" id="b" onclick="next_product('spthinhhanh',-1)">&#10094;</div>
+                    <div class="owl-next" onclick="click_banchay(1)">&#10095;</div>
+                    <div class="owl-previous" id="b" onclick="click_banchay(-1)">&#10094;</div>
                 </div>
         </div>
 
@@ -109,7 +111,7 @@
                         <li id="20008" onclick="SP_TL(20008)">Thiếu Nhi</li>
                         <li id="20009" onclick="SP_TL(20009)">Truyện Tranh - Manga</li>
                         <li id="20007" onclick="SP_TL(20007)">Tuổi trẻ</li>
-                        <li id="20006" onclick="SP_TL(20007)">Tâm Lý - Giáo Dục</li>
+                        <li id="20006" onclick="SP_TL(20006)">Tâm Lý - Giáo Dục</li>
                     </ul>
 
                 </div>
@@ -441,6 +443,93 @@
                 <span class="col-md-3 col-sm giohang1" style="text-align:center;"><button class="tt" id="thanhtoan">THANH TOÁN</button></span>
             </div>  
             </div>
+      </div>
+    </div>
+
+    <div id="content_lsdonhang">
+        <div class="ls_content">
+            <div class="container-fuild row" style="margin-top:10px;">
+                <div class="col-md-12 col-sm-12 row thuoctinhgiohang"> 
+
+                    <div class="col-md-6 col-sm-12 row thuoctinhgiohang"> 
+                        <span class="col-md-2 col-sm-12 giohang1">Sản Phẩm</span>
+                        <span class="col-md-5 col-sm-12 giohang1">&nbsp;</span>
+                        <span class="col-md-2 col-sm giohang1">Đơn Giá</span>
+                        <span class="col-md-1 col-sm giohang1">&nbsp;</span>
+                        <span class="col-md-2 col-sm giohang1">Tổng Giá</span>
+
+                    </div>
+
+                    <div class="col-md-1 col-sm-12 row thuoctinhgiohang">&nbsp;</div>
+
+                    <div class="col-md-4 col-sm-12 row thuoctinhgiohang"> 
+                        <span class="col-md col-sm giohang1">Thanh Toán</span>
+                        <span class="col-md col-sm giohang1">Ngày Mua</span>
+                        <span class="col-md col-sm giohang1">Trạng Thái</span>
+                        <span class="col-md col-sm giohang1">&nbsp;</span>
+                    </div>
+
+                </div>
+
+                <div id="lsdh" class="col-md-12 col-sm-12 row thuoctinhlsdonhang" style="margin-top:20px;">
+                    <div class="col-md-12 col-sm-12 row thuoctinhlsdonhang">
+                        <!-- <div class="col-md-6 col-sm-8 row thuoctinhlsdonhang_sp">
+
+                            <div class="col-md-12 col-sm-12 row thuoctinhlsdonhang">   
+                                <span class="col-md-2 col-sm-3 img_donhang">
+                                    <img src="product/Sách Tiếng Việt/Teen/hoa-hoc-tro-so-1355.jpg">
+                                </span>
+                                <span class="col-md-5 col-sm-6">
+                                    <div class="ten_giohang">Hoa Học Trò Hoa Học Trò Hoa Học Trò Hoa Học Trò</div>
+                                </span>
+                                <span class="col-md-2 col-sm-2 lsdonhang2">50000</span>
+                                <span class="col-md-1 col-sm-2 lsdonhang2">x2</span>
+                                <span class="col-md-2 col-sm-1 lsdonhang2">100000</span>
+
+                            </div>
+
+                            <hr width="100%" size="3" align="center" color="black" style="margin-top:10px;"/>                         
+
+                        </div>
+
+                        <div class="col-md-1 col-sm-1 row thuoctinhlsdonhang_sp">&nbsp;</div>
+
+                        <div class="col-md-5 col-sm-4 row thuoctinhlsdonhang">
+
+                            <div class="col-md col-sm-12 row lsdonhang1">
+                                <span class="col-md-12 col-sm  row">100000đ</span>
+
+                            </div>
+                            <div class="col-md col-sm-12 row lsdonhang1">
+                                <span class="col-md-12 col-sm ">27-10-2001</span>
+
+                            </div>
+                            <div class="col-md col-sm-12  row lsdonhang1">
+                                <span class="col-md-12 col-sm  row">Chưa xử lý</span>
+                            </div>
+                            <div class="col-md col-sm-12  row lsdonhang1">
+                                <span class="col-md-12 col-sm  row"><img src="img/bin.png"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    
+                            <hr width="100%" size="3" align="center" color="black" style="margin-top:10px;"/> -->
+
+
+                    </div>
+
+            
+            </div>
+            <div class="col-md-12 col-sm-12 row thuoctinhlsdonhang">
+                        <span class="col-md-3 col-sm-12 giohang1">
+                            <h2 id="tongsoctsp" style="color:chocolate">&nbsp;</h2>
+                        </span>
+                        <span class="col-md-3 col-sm-12 giohang1">
+                            <a href="../Project_web2/?timkiem"><button class="ttmh">TIẾP TỤC MUA HÀNG</button></a>
+                        </span>
+                </div>  
       </div>
     </div>
    

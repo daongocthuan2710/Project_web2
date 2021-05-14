@@ -15,7 +15,6 @@
             if($row['TrangThai']== 1){
                 $taikhoan=$row['IdTK'];
             }
-
         }
     } else {
         echo "0 results";

@@ -29,8 +29,12 @@
                                                                 </div>
                                                         </div>
                                                         <div class="col-md-12 col-sm-12 col-12 row giohang">
-                                                                <div class="col-md-2 col-sm-6 col-6"><a href="../Project_web2/?giohang" id="giohang_index"><img src="img/icongiohang.png" alt="giohang"></a></div>
+                                                                <div class="col-md-2 col-sm-6 col-6"><a><img src="img/icongiohang.png" alt="giohang"></a></div>
                                                                 <div class="col-md-10 col-sm-6 col-6 sp" id="sosp" style="margin-top: 15px;"> 0 sản phẩm</div>
+                                                                <div class="col-md-12 col-sm-12 col-12 row giohang_ct">
+                                                                        <div class="col-md-12 col-sm-12 col-12"><a href="../Project_web2/?giohang" id="giohang_index">Xem Giỏ Hàng</a></div>
+                                                                        <div class="col-md-12 col-sm-12 col-12"><a href="../Project_web2/?lsdonhang">Xem Lịch Sử Đơn Hàng</a></div>
+                                                                </div>
                                                         </div>
                                                 </div>
                                         </div>
@@ -39,10 +43,10 @@
                 </div>
                 <div id="header2">
                                 <ul>
-                                        <li class="menu_list" id="sachtiengviet" onmouseover="list_show(1)" onmouseout="list_show(0)">
+                                        <li class="menu_list" id="sachtiengviet" onclick="move()">
                                                 TIẾNG VIỆT
                                         </li>
-                                        <li class="menu_list" id="englishbooks" onmouseover="list_show(1)" onmouseout="list_show(0)">
+                                        <li class="menu_list" id="englishbooks" onclick="move()">
                                                 ENGLISH BOOKS
                                         </li>
                                 </ul>
