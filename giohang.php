@@ -37,6 +37,7 @@
     $tonkho=0;
 
     for($i=0;$i<count($giohang);$i++){
+        
         if($giohang[$i]['IdDonHang']===$x){
             for($e=0;$e<count($sach);$e++){
                 if($sach[$e]['IdSach']==$x){

@@ -2,7 +2,7 @@
        <div class="l-main-SignIn animate">
             <form action="" method="GET" name="FormEditAccount"  id="formEditOrCreateAcc">
             <h1 id="title-form-edit-acc">Sửa thông tin</h1>
-                    <input type="text"  name="IdTK" id = "IdTK" placeholder="Id"  disabled>
+                    <input type="text"  name="IdTK" id = "IdTK" placeholder="Id"  >
                     <div style="width: auto; height:15px;"><span id="noti-Id"></span></div>
                     
                     <input type="text"  name="USERNAME" id = "USERNAME" placeholder="tên tài khoản"  required >

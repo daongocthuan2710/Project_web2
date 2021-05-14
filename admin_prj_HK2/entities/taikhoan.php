@@ -44,7 +44,7 @@
             return true;
         },
         'insertTK' => function($conn,$TK) {
-            $query ="INSERT INTO taikhoan (USERNAME,PASSWORD,MaQuyen,TrangThai) VALUES ('"
+            $query ="INSERT INTO taikhoan (IdTK,USERNAME,PASSWORD,MaQuyen,TrangThai) VALUES ('".$TK[4]."','"
             .$TK[0]."','".$TK[1]."','".$TK[2]."',".$TK[3].")";
             $result = mysqli_query($conn,$query);
             if(!$result) {

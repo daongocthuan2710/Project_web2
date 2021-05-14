@@ -45,7 +45,7 @@
             if(!empty($book[3])) {
                 $query = $query . ",HinhAnh = '".$book[3]."'";
             }
-            $query = $query . ",NgayXB = '".$book[4]."',IdNXB = ".$book[5].",IdTacGia = ".$book[6].",DonGia = ".$book[7]." WHERE IdSach = ".$id;
+            $query = $query . ",NgayXB = '".$book[4]."',IdNXB = ".$book[5].",IdTacGia = ".$book[6].",DonGia = ".$book[7].",TonKho = '".$book[8]."' WHERE IdSach = ".$id;
             $result = mysqli_query($conn,$query);
             if(!$result) {
                 return false;
@@ -53,8 +53,8 @@
             return true;
         },
         'insertBook' => function($conn,$book) {
-            $query ="INSERT INTO sach (TenSach,IdTheLoai,NoiDung,HinhAnh,NgayXB,IdNXB,IdTacGia,DonGia) VALUES ('".$book[0]."',"
-            .$book[1].",'".$book[2]."','".$book[3]."','".$book[4]."',".$book[5].",".$book[6].",".$book[7].")";
+            $query ="INSERT INTO sach (TenSach,IdTheLoai,NoiDung,HinhAnh,NgayXB,IdNXB,IdTacGia,DonGia,TonKho) VALUES ('".$book[0]."',"
+            .$book[1].",'".$book[2]."','".$book[3]."','".$book[4]."',".$book[5].",".$book[6].",".$book[7].",'".$book[8]."')";
             $result = mysqli_query($conn,$query);
             if(!$result) {
                 return false;

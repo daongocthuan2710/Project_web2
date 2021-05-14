@@ -31,7 +31,7 @@
             return $data[0];
         },
         'updateKH' => function($conn,$kh,$id) {
-            $query ="UPDATE khachhang SET TenKH = '".$kh[0]."', Ho_Dem_KH = '".$kh[1]."', SDT= ".$kh[2].", email = '".$kh[3]."', DiaChi = '".$kh[4]."' WHERE IdNV = '".$id."' ";
+            $query ="UPDATE khachhang SET TenKH = '".$kh[0]."', Ho_Dem_KH = '".$kh[1]."', SDT= '".$kh[2]."', email = '".$kh[3]."', DiaChi = '".$kh[4]."' WHERE IdKH = '".$id."' ";
             $result = mysqli_query($conn,$query);
             if(!$result) {
                 return false;

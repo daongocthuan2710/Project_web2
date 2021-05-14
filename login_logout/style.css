@@ -56,6 +56,7 @@ form {
     font-size: 2.2rem;
     color: #444;
     margin-bottom: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .input-field {
@@ -66,11 +67,13 @@ form {
     margin: 10px 0;
     border-radius: 55px;
     display: grid;
-    grid-template-columns: 15% 58%;
+    grid-template-columns: 15% 75%;
     padding: 0 0.4rem;
     position: relative;
 }
-
+.form__invalid {
+	border: 0.5px solid red;
+}
 .input-field i {
     text-align: center;
     line-height: 55px;
@@ -87,6 +90,8 @@ form {
     font-size: 1.2rem;
     color:#333;
 }
+
+
 
 .input-field input:placeholder-shown {
     color: #aaa;
@@ -147,7 +152,6 @@ form {
     transform: translate(-50%,-50%);
     display: grid;
     grid-template-columns: 1fr;
-    /* z-index: 8; */
     transition: 0.9s 0.6s ease-in-out;
 }
 
@@ -184,7 +188,6 @@ form.sign-up-form {
     left: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* z-index: 3; */
 }
 
 .panel {
@@ -238,16 +241,7 @@ form.sign-up-form {
 }
 
 /* Animation */
-/* .container.sign-up-mode .panels-container {
-    z-index: 2;
-}
 
-.container.sign-up-mode .forms-container {
-    z-index: 3;
-} */
-/* .container.sign-up-mode .forms-container .signin-signup {
-    z-index: 5;
-} */
 
 .container.sign-up-mode::before {
     transform: translate(100%,-50%);
@@ -295,10 +289,8 @@ form.sign-up-form {
 }
 
 /*sign-in-mode */
-
 .container.sign-in-mode::before {
     transform: translate(0%,-60%);
-    /* right: 52%; */
     right: 48%;
 }
 
@@ -336,4 +328,29 @@ form.sign-up-form {
     z-index: 2;
     opacity: 1;
     transition: 0.9s 0.6s ease-in-out;
+}
+
+.errorMessage {    
+    font-family: 'Times New Roman', Times, serif;
+    color: red  ;
+    font-size: 21px;
+}
+
+#customalert {
+	visibility: hidden;
+	min-width: 250px;
+	color: #fff;
+	font-size: 14pt;
+	text-align: center;
+	border-radius: 2px;
+	padding: 20px;
+	position: fixed;
+	z-index: 100;
+	left: 50%;
+	top: 30px;
+	transform: translateX(-50%);
+}
+#customalert.show {	
+	visibility: visible;
+	animation: fadein 0.5s, fadeout 0.5s 3s;
 }

@@ -30,7 +30,7 @@
             return $data[0];
         },
         'updateNV' => function($conn,$nv,$id) {
-            $query ="UPDATE nhanvien SET TenNV = '".$nv[0]."', Ho_Dem_NV = '".$nv[1]."', SDT= ".$nv[2].", email = '".$nv[3]."', DiaChi = '".$nv[4]."' WHERE IdNV = '".$id."' ";
+            $query ="UPDATE nhanvien SET TenNV = '".$nv[0]."', Ho_Dem_NV = '".$nv[1]."', SDT= '".$nv[2]."', email = '".$nv[3]."', DiaChi = '".$nv[4]."' WHERE IdNV = '".$id."' ";
             $result = mysqli_query($conn,$query);
             if(!$result) {
                 return false;
@@ -39,7 +39,7 @@
         },
         'insertNV' => function($conn,$nv) {
             $query ="INSERT INTO nhanvien (TenNV,Ho_Dem_NV,SDT,email,DiaChi) VALUES ('".$nv[0]."','"
-            .$nv[1]."',".$nv[2].",'".$nv[3]."','".$nv[4]."')";
+            .$nv[1]."','".$nv[2]."','".$nv[3]."','".$nv[4]."')";
             $result = mysqli_query($conn,$query);
             if(!$result) {
                 return false;

@@ -8,9 +8,9 @@
             ['deleteBook' => $check] = require '../entities/sach.php';
             $flag = $check($conn,$idProd);
             if(!$flag) {
-                $res = $res."<script>alert('xoa that bai');</script>";
+                $res = $res."<script>alert('xóa thất bại');</script>";
             } else {
-                $res = $res."<script>alert('xoa thanh cong');</script>";
+                $res = $res."<script>alert('xóa thành công');</script>";
             }
         } else if($typeActionProd == "findProd") {
             $selectType = "";
@@ -18,7 +18,8 @@
             $book = $func($conn,$idProd);
             $res = $res . "<script>document.getElementById('Idsach').value='".$book['IdSach']."';document.getElementById('TenSach').value='".$book['TenSach']."';document.getElementById('DonGia').value='"
             .$book['DonGia']."';document.getElementById('TheLoai').value='".$book['IdTheLoai']."';document.getElementById(\"NXB\").value = '".$book['IdNXB']."';document.getElementById(\"NgayXB\").value = '"
-            .$book['NgayXB']."';document.getElementById(\"author\").value = '".$book['IdTacGia']."';document.getElementById(\"NoiDungABC\").value = '';document.getElementById('form-edit-product').style.display='block';</script>";
+            .$book['NgayXB']."';document.getElementById(\"author\").value = '".$book['IdTacGia']."';document.getElementById(\"NoiDungABC\").value = '';
+            document.getElementById(\"TonKho\").value = '".$book['TonKho']."';document.getElementById('form-edit-product').style.display='block';</script>";
 
         }
     }
@@ -34,7 +35,7 @@
         $NXB = $_POST["NXB"];
         $NgayXB = $_POST["NgayXB"];
         $tacgia = $_POST["author"];
-
+        $TonKho = $_POST["TonKho"];
         if(isset( $_FILES['HinhAnh'])) {
             //upload file
             $file = $_FILES['HinhAnh'];
@@ -65,19 +66,19 @@
         
         if(!empty($id)) {
             ['updateBook' => $func] = require '../entities/sach.php';
-            $productUpdate = $func($conn,array($ten,$theloai,$noidung,$hinhanh,$NgayXB,$NXB,$tacgia,$gia),$id);
+            $productUpdate = $func($conn,array($ten,$theloai,$noidung,$hinhanh,$NgayXB,$NXB,$tacgia,$gia,$TonKho),$id);
             if(!$productUpdate) {
-                $res = "<script>setTimeout(function() {alert('Update book failed !');}, 500)</script>";
+                $res = "<script>setTimeout(function() {alert('sửa thông tin sách thất bại !');}, 500)</script>";
             } else {
-                $res = "<script>setTimeout(function() {alert('Update book success !');}, 500)</script>";
+                $res = "<script>setTimeout(function() {alert('sửa thông tin sách thành công !');}, 500)</script>";
             }     
         } else {
             ['insertBook' => $func] = require '../entities/sach.php'; 
-            $productCreate = $func($conn,array($ten,$theloai,$noidung,$hinhanh,$NgayXB,$NXB,$tacgia,$gia));
+            $productCreate = $func($conn,array($ten,$theloai,$noidung,$hinhanh,$NgayXB,$NXB,$tacgia,$gia,$TonKho));
             if(!$productCreate) {
-                $res = "<script>setTimeout(function() {alert('Create book failed !');}, 500)</script>";
+                $res = "<script>setTimeout(function() {alert('thêm thông tin sách thất bại !');}, 500)</script>";
             } else {
-                $res = "<script>document.getElementById('form-edit-product').style.display='none'; setTimeout(function() {alert('Create book success !');}, 500)</script>";
+                $res = "<script>document.getElementById('form-edit-product').style.display='none'; setTimeout(function() {alert('thêm thông tin sách thành công  !');}, 500)</script>";
             }
         }
     }

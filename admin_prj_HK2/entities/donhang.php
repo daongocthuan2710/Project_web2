@@ -18,4 +18,24 @@
             }
             return $data;
         },
+
+        'findDHById' => function($conn,$idhd,$status) {
+            $query ="SELECT * FROM hoadon WHERE IdHoaDon = '".$idhd."'";
+            $result = mysqli_query($conn,$query);
+            $data = array();
+            if ($result) {
+                while($row = mysqli_fetch_array($result)){
+                    $data[] = $row;
+                }
+            }
+            return $data[0];
+        },
+        'updateDH' => function($conn,$status,$id) {
+            $query ="UPDATE hoadon SET TrangThai = ".$status." WHERE IdHoaDon = '".$id."' ";
+            $result = mysqli_query($conn,$query);
+            if(!$result) {
+                return false;
+            }
+            return true;
+        },
     ];

@@ -9,14 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/style2.css">
     <link rel="stylesheet" href="src/css/style.scss">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 
-<body>
+<body> 
     <div class="wrapper">
         <?php
                 require('../admin_prj_HK2/PHP/slibar.php')
@@ -87,23 +87,10 @@
                             <button type="button" id="btnConfirmDel" class="cancelbtn-dlt-ele-prct ">delete</button>
                         </form>
                     </div>
-                    <div id="form-check-bill" class="form-acpt-dlt-prct">
-                        <form class="ctn-form-acpt-dlt-prct animate-form-accept-delete-product"
-                            action="/action_page.php" method="post">
-                            <h3 id="title-check-bill">kiểm tra đơn hàng</h3>
-                            <button type="button"
-                                onclick="document.getElementById('form-check-bill').style.display='none'"
-                                class="cancelbtn-dlt-ele-prct ">Cancel</button>
-                                                            
-                            <label class="switch-check-bill" id="btnConfirmAccept">
-                            <input type="checkbox" id="checkbill" checked>
-                            <span class="slider round"></span>
-                            </label>
-                        
-                        </form>
-                    </div>
+                    
                     <?php
-                            include('../admin_prj_HK2/PHP/staticial-product.php')
+                            include('../admin_prj_HK2/PHP/checkbill.php');
+                            include('../admin_prj_HK2/PHP/staticial-product.php');
                         ?>
                     </div>
                 </div>
@@ -213,6 +200,7 @@
         document.getElementById('NXB').value='';
         document.getElementById('NgayXB').value='';
         document.getElementById('author').value='';
+        document.getElementById('TonKho').value='';
         document.getElementById('signup-submit').value='Thêm';
         document.getElementById('title-form-edit').innerHTML='Thêm sách mới';
         document.getElementById('form-edit-product').style.display='block';
@@ -326,6 +314,8 @@
         document.getElementById('typeActionacc').value = "findAcc";
         document.getElementById('btnActionacc').click();
     }
+    
+    
 
     $(document).ready(function() {
         //submit form
@@ -423,18 +413,7 @@
             });
         });
     });
-    function setBill(id) {
-        var checkbox = document.getElementById('checkbill');
-            document.getElementById('form-check-bill').style.display = 'block';
-            document.getElementById('checkbill').onclick = function() {
-                if(checkbox.checked == false){
-            document.getElementById(id).style.border = "solid 3px #ff7575";
-            }
-            if(checkbox.checked == true){
-                document.getElementById(id).style.border = "solid 3px #C6F7FE";
-        }
-    }   
-    }
+    
     </script>
 </body>
 

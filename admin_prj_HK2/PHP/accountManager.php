@@ -16,9 +16,9 @@
             ['deleteTK' => $check] = require '../entities/taikhoan.php';
             $flag = $check($conn,$Idacc);
             if(!$flag) {
-                $res = $res."<script>alert('xoa that bai');</script>";
+                $res = $res."<script>alert('xóa thất bại');</script>";
             } else {
-                $res = $res."<script>alert('xoa thanh cong');</script>";
+                $res = $res."<script>alert('xóa thành công');</script>";
             }}
         }
 
@@ -34,18 +34,18 @@
             ['updateTK' => $func] = require '../entities/taikhoan.php';
             $accountUpdate = $func($conn,array($USERNAME,$PASSWORD,$MaQuyen,$TrangThai),$IdTK);
             if(!$accountUpdate) {
-                $res = "<script>setTimeout(function() {alert('Update book failed !');}, 500)</script>";
+                $res = "<script>setTimeout(function() {alert('sửa tài khoản thất bại !');}, 500)</script>";
             } else {
-                $res = "<script>setTimeout(function() {alert('Update book success !');}, 500)</script>";
+                $res = "<script>setTimeout(function() {alert('sửa tài khoản thành công !');}, 500)</script>";
             }     
         } else {
 
             ['insertTK' => $func] = require '../entities/taikhoan.php'; 
             $accountCreate = $func($conn,array($IdTK,$USERNAME,$PASSWORD,$MaQuyen,$TrangThai));
              if(!$accountCreate) {
-                 $res = "<script>setTimeout(function() {alert('Create book failed !');}, 500)</script>";
+                 $res = "<script>setTimeout(function() {alert('thêm tài khoản thất bại !');}, 500)</script>";
              } else {
-                 $res = "<script>document.getElementById('form-edit-noti-humman').style.display='none'; setTimeout(function() {alert('Create book success !');}, 500)</script>";
+                 $res = "<script>document.getElementById('form-edit-noti-humman').style.display='none'; setTimeout(function() {alert('thêm tài khoản thành công !');}, 500)</script>";
              }
         }
     }

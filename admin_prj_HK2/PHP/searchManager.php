@@ -12,7 +12,7 @@
         <div class=\"information-col\">
         <p class=\"id-manager\">ID: ".$data[$i]['IdNV']."</p>
         <p class=\"username-manager\">Tên: ".$data[$i]['TenNV']."".$data[$i]['Ho_Dem_NV']."</p>
-        <p class=\"pw-manager\">SDT: ".$data[$i]['SDT']."d</p>
+        <p class=\"pw-manager\">SDT: ".$data[$i]['SDT']."</p>
         <p class=\"quyen-manager\">Email: ".$data[$i]['email']."</p>
         <p class=\"trang-thai-manager\">Địa chỉ: ".$data[$i]['DiaChi']."</p></div></div> ";
         $res = $res . $temp;

@@ -15,7 +15,8 @@
         <p class=\"name-product\"> Tên: ".$data[$i]['TenSach']."</p> 
         <p class=\"price-product\">Giá: ".$data[$i]['DonGia']."d</p> 
         <p class=\"author-of-product\">Tác giả: ".$data[$i]['TenTacGia']."</p> 
-        <p class=\"SL\">SL : 1</p>
+        
+        <p class=\"SL\">SL : ".$data[$i]['TonKho']."</p>
         <p class=\"ngayxb\">ngày XB: ".$data[$i]['NgayXB']."</p> 
         <p class=\"theloai\">Thể loại: ".$data[$i]['TenTheLoai']."</p> 
         <p class=\"tennxb\"> NXb: ".$data[$i]['TenNXB']."</p> </div> ";

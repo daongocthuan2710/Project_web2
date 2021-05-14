@@ -16,9 +16,9 @@
             ['deleteKH' => $check] = require '../entities/khachhang.php';
             $flag = $check($conn,$IdCus);
             if(!$flag) {
-                $res = $res."<script>alert('xoa that bai');</script>";
+                $res = $res."<script>alert('xóa thất bại');</script>";
             } else {
-                $res = $res."<script>alert('xoa thanh cong');</script>";
+                $res = $res."<script>alert('xóa thành công');</script>";
             }}
         }
 
@@ -33,20 +33,20 @@
 
         if(!empty($id)) {
             ['updateKH' => $func] = require '../entities/khachhang.php';
-            $customerUpdate = $func($conn,array($ten,$hodem,$sdt,$email,$diachi),$id);
+             $customerUpdate = $func($conn,array($ten,$hodem,$sdt,$email,$diachi),$id);
             if(!$customerUpdate) {
-                $res = "<script>setTimeout(function() {alert('Update book failed !');}, 500)</script>";
+                $res = "<script>setTimeout(function() {alert('sửa thông tin khách hàng thất bại !');}, 500)</script>";
             } else {
-                $res = "<script>setTimeout(function() {alert('Update book success !');}, 500)</script>";
+                $res = "<script>setTimeout(function() {alert('sửa thông tin khách hàng thành công !');}, 500)</script>";
             }     
         } else {
             
             ['insertKH' => $func] = require '../entities/khachhang.php'; 
             $customerCreate = $func($conn,array($ten,$hodem,$sdt,$email,$diachi));
              if(!$customerCreate) {
-                 $res = "<script>setTimeout(function() {alert('Create book failed !');}, 500)</script>";
+                 $res = "<script>setTimeout(function() {alert('thêm khách hàng thất bại !');}, 500)</script>";
              } else {
-                 $res = "<script>document.getElementById('form-edit-noti-cus').style.display='none'; setTimeout(function() {alert('Create book success !');}, 500)</script>";
+                 $res = "<script>document.getElementById('form-edit-noti-cus').style.display='none'; setTimeout(function() {alert('thêm khách hàng thành công !');}, 500)</script>";
              }
         }
     }

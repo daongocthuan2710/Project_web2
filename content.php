@@ -523,12 +523,25 @@
             
             </div>
             <div class="col-md-12 col-sm-12 row thuoctinhlsdonhang">
-                        <span class="col-md-3 col-sm-12 giohang1">
+                        <span class="col-md-2 col-sm-12 giohang1">
                             <h2 id="tongsoctsp" style="color:chocolate">&nbsp;</h2>
                         </span>
-                        <span class="col-md-3 col-sm-12 giohang1">
+                        <span class="col-md-2 col-sm-12 giohang1">
                             <a href="../Project_web2/?timkiem"><button class="ttmh">TIẾP TỤC MUA HÀNG</button></a>
                         </span>
+                        <span class="col-md-3 col-sm-12 giohang1">
+                            <div class="ttlsgh" id="ttlsgh">Đã Thanh Toán: 0đ</div>
+                        </span>
+                        <span class="col-md-5 col-sm-12 giohang1">
+                            <div id="timtheongay">
+                                        <input type="text" id="limit"  placeholder="TOP" value=""/> 
+                                        <hr width="10%" size="5" align="center" color="black"/>
+                                        <input type="text" id="ngaytu"  placeholder="2020/05/14" value=""/>   
+                                        <hr width="10%" size="5" align="center" color="black"/>
+                                        <input type="text" id="ngayden"  placeholder="2021/05/14" value="2021/05/14"/>
+                            </div>
+                        </span>
+
                 </div>  
       </div>
     </div>

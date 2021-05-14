@@ -84,10 +84,10 @@ require('nxb_ct.php');
                                             Mua ngay
                                         </button> -->
 
-                                        <button type="">
-                                            <div class="bi-cart4 btn " onclick="add_cart(<?php echo $sach[0]['IdSach']?>)"></div>
-                                            Thêm vào giỏ hàng
-                        </button>
+                                       
+                                            <div class="bi-cart4 btn tvgh" onclick="add_cart(<?php echo $sach[0]['IdSach']?>)">Thêm vào giỏ hàng</div>
+                                            
+                        
                     </div>
                     
                 </div>
@@ -95,14 +95,14 @@ require('nxb_ct.php');
                 <div class="clearfix"></div>
 
                 <div class = "mrg ">
-                    <button type="" class = " btn btn-primary">
+                    <button type="" class = " btn btn-primary tvgh">
                             <div class="fa fa-thumbs-o-up"></div>
                             <!-- <img src="img_ct/like.png"/> -->
                             <!-- <a href="https://icons8.com/icon/114072/facebook-like">Facebook Like icon by Icons8</a> -->
                         Like
                     </button>
 
-                    <button type="" class = " btn btn-primary">
+                    <button type="" class = " btn btn-primary tvgh">
                         <!-- <img src="img_ct/share.png"/> -->
                         Share
                 </div>
@@ -116,11 +116,11 @@ require('nxb_ct.php');
 
     <div class="CDC">
 
-        <button class="content_product btn btn-primary" onclick = "content()">Nội dung</button>
+        <button class="content_product btn btn-primary nd" onclick = "content()">Nội dung</button>
 
-        <button class="detailed_infomation btn btn-primary" onclick = "infomation();">Thông tin chi tiết</button>
+        <button class="detailed_infomation btn btn-primary nd" onclick = "infomation();">Thông tin chi tiết</button>
 
-        <div class="comment_reviews btn btn-primary" onclick = "comment_review();">Nhật xét & Đánh giá</div>
+        <div class="comment_reviews btn btn-primary nd" onclick = "comment_review();">Nhật xét & Đánh giá</div>
 
     </div>
 

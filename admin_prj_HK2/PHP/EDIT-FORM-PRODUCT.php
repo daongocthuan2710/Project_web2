@@ -9,7 +9,7 @@
             <input type="text" id="TenSach" name="TenSach" placeholder="Tên Sách" required>
 
             <div style="width: auto; height:15px;"><span id="noti-TenSach"></span></div>
-            <input type="text" id="DonGia" name="DonGia" placeholder="Đơn giá" onkeyup="checkPrice()" required pattern="\d{1,3}(?:[.,]\d{3})*(?:[.,]\d{2})?">
+            <input type="text" id="DonGia" name="DonGia" placeholder="Đơn giá" onkeyup="checkPrice()" required pattern="^(([0-9]*)+(.)+[0-9])$">
             <div style="width: auto; height:15px;"><span id="noti-DonGia-pro"></span></div>
 
             <!-- <input type="text" id="TheLoai" name="TheLoai " placeholder="Thể Loại" required> -->
@@ -66,6 +66,8 @@
                         }
                         ?>
             </select>
+            <input type="text" id="TonKho" name="TonKho" placeholder="Tồn kho" onkeyup="checkPrice()" required pattern="^([0-9]*)$">
+            <div style="width: auto; height:15px;"><span id="noti-SL-pro"></span></div>
             <!-- <input type="text" id="TacGia" name="TacGia" placeholder="Tác giả" required> -->
 
             <input type="button" id="signup-submit"
@@ -128,6 +130,7 @@ $(document).ready(function() {
         fd.append('NXB', $("#NXB").val());
         fd.append('NgayXB', $("#NgayXB").val());
         fd.append('author', $("#author").val());
+        fd.append('TonKho',$("#TonKho").val());
         $.ajax({
             url: "PHP/bookManager.php",
             type: 'POST',

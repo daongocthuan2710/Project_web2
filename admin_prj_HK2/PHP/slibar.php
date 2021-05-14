@@ -1,4 +1,5 @@
 <div class="slibar-form">
+		<a href="../index.php"><img id="img-logo-page" src="..\admin_prj_HK2\img\logosach.png" alt="xx"></a>
         <div class="container-slibar-menu">
 <nav>
 		<ul class="mcd-menu">
@@ -49,14 +50,14 @@
 					<small>acccount</small>
 				</a>
 			</li>
-			<li>
+			<!-- <li>
 				
                 <a href="" class="active">
 					<i class="fa fa-edit"></i>
 					<strong>Giới thiệu</strong>
 					<small>sweet home</small>
 				</a>
-			</li>
+			</li> -->
 		</ul>
 	</nav>
 </div>

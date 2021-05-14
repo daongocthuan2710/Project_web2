@@ -1204,6 +1204,22 @@ height: 175px;
   transition: 0.5s;
   background-color: #85caca;
 }
+#myBtnTop{
+  
+position: fixed;
+  
+top: 563px;
+  
+right: 46px;
+  
+background: #ff7575;
+  
+width: 40px;
+  
+height: 40px;
+  
+border-radius: 10px;
+}
 .contact-with-admin{
   font-size: 12px;
   margin: 15px 40px 0px 0px;
@@ -1577,7 +1593,14 @@ border-bottom: solid 2px #AAA;
   border: solid 1px black;
   padding: 15px 0px 0px 10px;
 }
-
+#img-logo-page{
+  
+margin: -90px 0px 0px 0px;
+  
+width: 260px;
+  
+height: 130px;
+}
 .r-form-cthd{
   float: right;
   width: 300px;

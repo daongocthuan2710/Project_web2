@@ -224,38 +224,32 @@ function add_cart(id){
 			 success : function(data)  
 					   {    
 							taikhoan=data;
-							// alert(taikhoan);
-							if(taikhoan==0){
 
-							}
-							else{
+							$.ajax({
+								type : 'POST', 
+								url : 'giohang.php',
+								dataType:'text',
+								data:{ manggiohang: x, taikhoan:taikhoan, soluong:1 },
+								success : function(data2)  
+										{    
+											console.log(data2);
+											$.ajax({
+												type : 'POST',
+												url : 'sosp.php',
+												data:{taikhoan:taikhoan},
+												dataType:'text',
+												success : function(data1)
+															{ 
+															var y=''+data1+' sản phẩm';
+															$('#sosp').html(y);
+															}
+												});
+												return false;
+										}
+										
+								});
+								return false;
 
-							
-								$.ajax({
-									type : 'POST', 
-									url : 'giohang.php',
-									dataType:'text',
-									data:{ manggiohang: x, taikhoan:taikhoan, soluong:1 },
-									success : function(data2)  
-											{    
-												console.log(data2);
-												$.ajax({
-													type : 'POST',
-													url : 'sosp.php',
-													data:{taikhoan:taikhoan},
-													dataType:'text',
-													success : function(data1)
-																{ 
-																var y=''+data1+' sản phẩm';
-																$('#sosp').html(y);
-																}
-													});
-													return false;
-											}
-											
-									});
-									return false;
-								}
 					   }
 					   
 			 });
@@ -737,6 +731,20 @@ function xoatungsp(id){
 	};
 }
 
+function changesl(id){
+	var x = id.split('_');
+	var t= x[1];
+	var value=document.getElementById(id).value;
+	$.ajax({
+		type : 'POST', 
+		url : 'setslgiohang.php',
+		data:{id:t, value:value},
+		 success : function(data) 
+				   { 
+						location.reload(); 
+				   }						  
+		 });
+}
 
 var mangsach=[];
 $(document).ready(function()
@@ -748,9 +756,11 @@ $(document).ready(function()
 	load_datasach();
 	hienthi();
 	load_user();
+	addtaikhoan_user();
 	load_giohang(mangsach);
 	load_datatheloai();
 	load_datatacgia();
+	load_menu();
 	load_datanxb(); 
 	load_lichsugiohang();
 
@@ -816,7 +826,6 @@ $(document).ready(function()
 			 success : function(data) 
 					   { 
 							taikhoan=data;
-							// alert(data);
 							$.ajax({
 								type : 'POST', 
 								url : 'donhang.php',
@@ -824,9 +833,6 @@ $(document).ready(function()
 								dataType:'json',
 								 success : function(data1) 
 										   { 
-												// alert(data1);
-											// 	console.log(data1);
-											//  // kh, id, soluong
 												$.each(data1, function (key, item){
 												  mangdonhang.push(item);
 												  mangiddonhang.push(item.IdDonHang);		 
@@ -863,7 +869,7 @@ $(document).ready(function()
 																				 html+='<span class="col-md-1 col-sm-1 giohang2 ">'+formatNumber(mangsach[j].DonGia)+'</span>';
 																				 html+='<span class="col-md-1 col-sm-1 row giohang2">';
 																					 html+='<div class="col-md-8 col-sm-8 giohang3">';
-																					 html+='<input type="number" name="soluong" id="soluong_'+mangsach[j].IdSach+'" value='+mangdonhang[i].SoLuong+' min="0">';
+																					 html+='<input type="number" name="soluong" id="soluong_'+mangsach[j].IdSach+'" onchange="changesl(this.id)" value='+mangdonhang[i].SoLuong+' min="0">';
 																					 html+='</div>';
 																					 html+='<div class="col-md-4 col-sm-4" class="soluong">';
 																					 html+='</div>';    
@@ -887,7 +893,7 @@ $(document).ready(function()
 																}
 																else{
 																 $('#sosp').html(x);
-																 $('#spcart').html(html+'sản phẩm');
+																 $('#spcart').html(html);
 																 $('#tongchiphi').html(formatNumber(tongchiphi));
 																}								  
 															}      
@@ -1023,7 +1029,16 @@ $(document).ready(function()
 																					else{
 																					$('#lsdh').html(html);
 																					$('#tongsoctsp').html(manghoadon.length+" đơn hàng");
-																					}								  
+																					}	
+																					$.ajax({
+																						type : 'POST', 
+																						url : 'tongtienhoadon.php',
+																						data:{taikhoan:taikhoan},
+																						 success : function(data) 
+																								   { 
+																									$('#ttlsgh').html("Đã Thanh Toán: "+formatNumber(Number(data)));
+																								   }						  
+																						 });							  
 																				}      
 																	});
 																	return false;
@@ -1106,6 +1121,25 @@ $(document).ready(function()
 			   });
 			   return false;
 	};
+	function load_menu()
+	{
+	  $.ajax({
+		   type : 'POST',
+		   url : 'menu.php',
+		   dataType:'json',
+			success : function(data)
+					  { 
+						   html='';
+						   $.each(data, function (key, item){							//   mangtheloai.push(item); 
+							   html+='<li class="menu_list" id="'+item.IdMenu+'" onclick="move()">';
+							   		html+=''+item.TenMenu+'';
+							   html+='</li>';
+						   }); 
+						   $('#showmenu').html(html);                         
+					  }      
+			});
+			return false;
+ };
 
 	function load_user(){
 		var taikhoan=[];
@@ -1124,10 +1158,23 @@ $(document).ready(function()
 							}
 							else{
 								html+='<li><img src="img/iconuser.png" alt="user"></li>';
-								html+='<li>'+taikhoan.USERNAME+'</li>';
+								html+='<li>'+taikhoan.HO_DEM+" "+taikhoan.TEN+'</li>';
 								$('#dangxuat').html('Đăng Xuất');
 							};
 							$('#dangnhap').html(html);
+					   }				  
+			 });
+	}
+
+	function addtaikhoan_user(){
+		var taikhoan=[];
+		$.ajax({
+			type : 'POST', 
+			url : 'addtaikhoan_user.php',	
+			dataType:'json',
+			success : function(data1) 
+					   { 
+
 					   }				  
 			 });
 	}
@@ -1146,6 +1193,162 @@ $(document).ready(function()
 				 });
 				 
 	});
+
+	$("#timtheongay").on('change',function load_lichsugiohang(){
+		var taikhoan;
+		var ngaytu=$('#ngaytu').val();
+		var ngayden=$('#ngayden').val();
+		var limit=$('#limit').val();
+		$.ajax({
+			type : 'POST', 
+			url : 'loc_taikhoan.php',
+			 success : function(data) 
+					   { 
+							taikhoan=data;
+							$.ajax({
+								type : 'POST', 
+								url : 'date.php',
+								data:{taikhoan:taikhoan,
+									ngaytu:ngaytu,
+									ngayden:ngayden,
+									limit:limit},
+								dataType:'json',
+								 success : function(data1) 
+										   { 
+												var manghoadon=[];
+												var manghoadon=[];
+												var mangcthoadon=[];
+												$.each(data1, function (key, item){
+												  manghoadon.push(item);	 
+												});  
+
+												$.ajax({
+													type : 'POST',
+													url : 'cthoadon.php',
+													dataType:'json',
+													 success : function(data2)
+															   { 
+																
+																	$.each(data2, function (key, item){
+																		mangcthoadon.push(item); 
+																	});	
+
+																	var mangtest=[];
+
+																	$.ajax({
+																	type : 'POST',
+																	url : 'db_connect.php',
+																	dataType:'json',
+																	success : function(data3)
+																				{ 
+																				
+																					$.each(data3, function (key, item){
+																						mangtest.push(item); 
+																					});		
+																				
+																					var html = '';
+																					for(let i=0;i<manghoadon.length;i++){
+																										html+='<div class="col-md-12 col-sm-12 row thuoctinhlsdonhang">';
+																											html+='<div class="col-md-6 col-sm-8 row thuoctinhlsdonhang_sp">';
+																						for(let j=0; j<mangcthoadon.length;j++){
+																										
+																							if(mangcthoadon[j].IdHoaDon==manghoadon[i].IdHoaDon)
+																							{
+																								for(let k=0; k<mangtest.length;k++){
+																									if(mangtest[k].IdSach==mangcthoadon[j].IdSach){
+																												html+='<div class="col-md-12 col-sm-12 row thuoctinhlsdonhang">';   
+																													html+='<span class="col-md-2 col-sm-3 img_donhang">';																													
+																														html+='<a href="index_ct.php?id='+mangsach[k].IdSach+'"><img src="'+mangsach[k].HinhAnh+'"></a>';
+																														html+='</span>';
+																														html+='<span class="col-md-5 col-sm-6">';
+																														html+='<div class="ten_giohang">'+mangtest[k].TenSach+'</div>';
+																														html+='</span>';
+																													html+='<span class="col-md-2 col-sm-2 lsdonhang2">'+formatNumber(mangtest[k].DonGia)+'</span>';
+																													html+='<span class="col-md-1 col-sm-2 lsdonhang2">'+mangcthoadon[j].SLBan+'</span>';
+																													html+='<span class="col-md-2 col-sm-1 lsdonhang2">'+formatNumber(Number(mangcthoadon[j].DonGia)*mangcthoadon[j].SLBan)+'</span>';
+																					
+																												html+='</div>';
+																				
+																												html+='<hr width="100%" size="3" align="center" color="black" style="margin-top:10px;"/>';																										
+																				
+																											
+																									}																																													
+																								}
+																							}
+
+																						}
+																					
+																											html+='</div>';
+																										
+																											html+='<div class="col-md-1 col-sm-1 row thuoctinhlsdonhang_sp">&nbsp;</div>';
+																													
+																											html+='<div class="col-md-5 col-sm-4 row thuoctinhlsdonhang">';
+																				
+																												html+='<div class="col-md col-sm-12 row lsdonhang1">';
+																													html+='<span class="col-md-12 col-sm  row">'+formatNumber(manghoadon[i].TongTien)+'</span>';
+																												html+='</div>';
+																												html+='<div class="col-md col-sm-12 row lsdonhang1">';
+																													html+='<span class="col-md-12 col-sm ">'+manghoadon[i].NgayMua+'</span>';
+																												html+='</div>';
+																												html+='<div class="col-md col-sm-12  row lsdonhang1">';
+																												if(manghoadon[i].TrangThai==0){
+																													html+='<span class="col-md-12 col-sm  row">Chờ xác nhận</span>';	
+																												}
+																												else{
+																													html+='<span class="col-md-12 col-sm  row">Đã xử lý</span>';	
+																												}
+																												html+='</div>';
+																												html+='<div class="col-md col-sm-12  row lsdonhang1">';
+																												if(manghoadon[i].TrangThai==0){
+																													html+='<span class="col-md-12 col-sm  row bin" id="'+manghoadon[i].IdHoaDon+'" onclick="bin(this.id)"><img src="img/bin.png"></span>';	
+																												}
+																												else{
+																													html+='<span class="col-md-12 col-sm  row">&nbsp;</span>';	
+																												}
+																												html+='</div>';
+																											html+='</div>';
+																				
+																										html+='</div>';
+																										html+='<hr width="100%" size="4" align="center" color="black" style="margin-top:10px;"/>';
+																						}
+																				//    console.log(html);
+																				//    console.log(mangsach.length);
+																					if(manghoadon.length==0){
+																					$('#lsdh').html('<h2>Bạn chưa có đơn hàng nào!<h2>');
+																					}
+																					else{
+																					$('#lsdh').html(html);
+																					$('#tongsoctsp').html(manghoadon.length+" đơn hàng");
+																					}	
+																					$.ajax({
+																						type : 'POST', 
+																						url : 'tongtienhoadon.php',
+																						data:{taikhoan:taikhoan},
+																						 success : function(data) 
+																								   { 
+																									$('#ttlsgh').html("Đã Thanh Toán: "+formatNumber(Number(data)));
+																								   }						  
+																						 });							  
+																				}      
+																	});
+																	return false;
+																								  
+															   }      
+													 }); 
+													 
+											
+											   
+							   
+										   }	
+																 
+								 });
+					   }						  
+			 });
+
+			return false;
+		
+	});
+
 
 	$("#banchay").on('change', function(event){
 		event.preventDefault();
@@ -1184,14 +1387,6 @@ $(document).ready(function()
 							success : function(data) 
 									{ 
 										taikhoan=data;
-										if(taikhoan==0){
-											var result1 = confirm("Bạn cần đăng nhập để thanh toán");
-											if (result1 == true){
-												window.location.href='login_logout/login_logout.php';
-											}
-											else{}
-										}
-										else{
 										$.ajax({
 											type : 'POST', 
 											url : 'xoagiohang.php',
@@ -1215,7 +1410,6 @@ $(document).ready(function()
 																	});      
 													}						  
 											});
-										}
 
 									}						  
 						  });
@@ -1241,11 +1435,11 @@ $(document).ready(function()
 
 					$.ajax({
 						type : 'POST', 
-						url : 'loc_taikhoan.php',
+						url : 'loc_taikhoan2.php',
 						 success : function(data) 
 								   { 
 									   taikhoan=data;
-									   if(taikhoan==0){
+									   if(taikhoan==2){
 											var result1 = confirm("Bạn cần đăng nhập để thanh toán");
 											if (result1 == true){
 												window.location.href='login_logout/login_logout.php';
@@ -1253,7 +1447,7 @@ $(document).ready(function()
 											else{}
 									   }
 									   else if(taikhoan==1){
-											alert("Không thể sử dụng tài quản lý bán hàng để mua hàng.")
+											alert("Không thể sử dụng tài khoản quản lý bán hàng để mua hàng")
 									   }
 									   else{
 											$.ajax({

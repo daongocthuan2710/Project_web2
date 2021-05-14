@@ -253,7 +253,7 @@ else {
 
 function checkPrice(){
     var msg;
-    var pos = /\d{1,3}(?:[.,]\d{3})*(?:[.,]\d{2})?/g ;
+    var pos = /^(([0-9]*)+(.)+[0-9])$/g ;
     if((document.FormEditProduct.DonGia.value).match(pos) || document.FormEditProduct.DonGia.value.length == 0 ){
         msg = "";
     }
@@ -278,3 +278,16 @@ function checkPrice(){
     }
      document.getElementById('noti-TT-Acc').innerText = msg;
   }
+  
+function checkSL(){
+    var msg;
+    var pos = /^([0-9]*)$/g ;
+    if((document.FormEditProduct.DonGia.value).match(pos) || document.FormEditProduct.DonGia.value.length == 0 ){
+        msg = "";
+    }
+    else {
+        msg = "isn't correct (1000)";
+    }
+     document.getElementById('noti-SL-pro').innerText = msg;
+  }
+  

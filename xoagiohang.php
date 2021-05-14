@@ -7,7 +7,6 @@
     mysqli_query($conn,"SET NAMES 'utf8'");
     
     $id=$_POST['id'];
-    echo $id;
     $taikhoan=$_POST['taikhoan'];
     echo $taikhoan;
     // if($taikhoan==0){$taikhoan='temp';}
@@ -29,7 +28,7 @@
 
         $giohang_arr=array();
         $idgiohang_arr=array();
-        $query2 = "SELECT * FROM `giohang`";
+        $query2 = "SELECT * FROM `giohang` WHERE IdKH='$taikhoan'";
         $result2 = mysqli_query($conn,$query2);
         if ($result2->num_rows > 0) {
             while($row = mysqli_fetch_array($result2)) {
@@ -46,7 +45,7 @@
                 $sach_arr[] = $row;
             }
         }
-        // echo "sach".$sach_arr;
+
         
         $hd="HD".mt_rand(1, 600);
         // echo $hd;
@@ -79,11 +78,10 @@
                         $dongia=$sach_arr[$x]['DonGia'];
                         $query4="INSERT INTO `cthoadon`(`IdHoaDon`, `IdSach`, `SLBan`, `DonGia`,`GhiChu`) 
                         VALUES ('$hd','$idsach',$soluong,$dongia,' ')";
+                        echo $idsach;       
                         $result12 = mysqli_query($conn,$query4);
                         if (mysqli_query($conn, $query4)) {
                             echo "Thêm vào hóa đơn chi tiết thành công";
-                        } else {
-                            echo "Error: " . $query4 . "<br>" . mysqli_error($conn);
                         }
                     }
                 }

@@ -32,15 +32,6 @@
         echo "0 results";
     }
 
-    // for ($x = 0; $x < count($sach_arr); $x++) {
-    //     if(array_key_exists(($sach_arr[$x].'IdTheLoai'),$vehicle))
-    //     {
-    //         $sach[]=$sach_arr[$x];
-    //     }
-    // }
- 
-    // return $sach_arr;
-    // echo $sach;
     echo json_encode($vehicle);
     mysqli_close($conn);
     
